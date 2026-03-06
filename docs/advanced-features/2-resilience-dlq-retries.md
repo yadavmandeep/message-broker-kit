@@ -81,7 +81,7 @@ const broker = MessageBrokerFactory.create({
 Put them all together and see the magic!
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 console.log("Starting Resilient Worker...");
 

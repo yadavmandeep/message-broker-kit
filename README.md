@@ -1,10 +1,10 @@
-# Message Broker Kit — Universal Messaging Engine
+# Universal Broker SDK — Unified Messaging Engine
 
 > **Enterprise-grade messaging for Node.js** — One API, any broker. Kafka, RabbitMQ, Redis, AWS SQS, ActiveMQ, NATS, MQTT. Switch brokers with a single config change.
 
 ---
 
-## Why Message Broker Kit?
+## Why Universal Broker SDK?
 
 - **Zero Lock-In** — Started with RabbitMQ, need Kafka later? Change one line. Same code.
 - **Unified API** — `publish()` and `subscribe()` work identically across all brokers.
@@ -33,11 +33,11 @@
 ## Quick Start
 
 ```bash
-npm install message-broker-kit amqplib
+npm install universal-broker-sdk amqplib
 ```
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({
   type: 'rabbitmq',

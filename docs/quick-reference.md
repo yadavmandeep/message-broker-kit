@@ -1,13 +1,13 @@
 # Quick Reference
 
-> Cheat sheet for Message Broker Kit — API, config snippets, and common patterns.
+> Cheat sheet for Universal Broker SDK — API, config snippets, and common patterns.
 
 ---
 
 ## Installation
 
 ```bash
-npm install message-broker-kit
+npm install universal-broker-sdk
 # Plus driver for your broker, e.g.:
 npm install amqplib      # RabbitMQ
 npm install kafkajs      # Kafka
@@ -23,7 +23,7 @@ npm install stompit      # ActiveMQ
 ## Create Broker (Minimal)
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({
   type: 'rabbitmq',  // kafka | redis | sqs | nats | mqtt | activemq | hybrid | serverless
@@ -83,7 +83,7 @@ Details: [Resilience & DLQ](./advanced-features/2-resilience-dlq-retries.md) | [
 ## Transactional Outbox (Snippet)
 
 ```typescript
-import { MessageBrokerFactory, OutboxProcessor, IOutboxStorage } from 'message-broker-kit';
+import { MessageBrokerFactory, OutboxProcessor, IOutboxStorage } from 'universal-broker-sdk';
 
 class MyOutbox implements IOutboxStorage {
   async fetchPendingMessages(limit: number) { /* SELECT * FROM outbox WHERE status='PENDING' LIMIT ? */ }
@@ -103,7 +103,7 @@ Full guide: [Transactional Outbox](./architecture/1-transactional-outbox.md)
 ## Saga Pattern (Snippet)
 
 ```typescript
-import { SagaCoordinator, MessageBrokerFactory } from 'message-broker-kit';
+import { SagaCoordinator, MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({ type: 'redis', options: { url: 'redis://localhost' } });
 const saga = new SagaCoordinator(broker);
@@ -125,7 +125,7 @@ Full guide: [Saga Pattern](./architecture/2-saga-pattern.md)
 ## Smart DLQ Dashboard
 
 ```typescript
-import { SmartDLQDashboard, MessageBrokerFactory } from 'message-broker-kit';
+import { SmartDLQDashboard, MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({ type: 'rabbitmq', options: { url: 'amqp://localhost' } });
 const dashboard = new SmartDLQDashboard(broker, myDeadLetterDb, { port: 4000, apiPath: '/api/dlq' });

@@ -6,7 +6,7 @@ For environments that don't allow persistent TCP sockets (`amqplib` or `kafkajs`
 Use `type: 'serverless'` in the initialization block to fall back to a "Connection-less stateless processing mode" (via HTTP REST proxies).
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({
   type: 'serverless', // Uses ServerlessRESTAdapter

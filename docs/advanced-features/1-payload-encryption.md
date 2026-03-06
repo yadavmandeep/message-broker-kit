@@ -8,7 +8,7 @@ This kit provides **Zero-Trust Encryption** natively.
 
 ## How It Works 🛠️
 
-Instead of manually encrypting string payloads in your code, you specify which fields you want encrypted inside your `BrokerConfig`. The `MessageBrokerKit` will intercept your publishing request, apply an `AES-256-CBC` encryption on those JSON keys, and send the encrypted blob over the wire.
+Instead of manually encrypting string payloads in your code, you specify which fields you want encrypted inside your `BrokerConfig`. The `Universal Broker SDK` will intercept your publishing request, apply an `AES-256-CBC` encryption on those JSON keys, and send the encrypted blob over the wire.
 
 When a downstream consumer uses our kit, the `EnterpriseBrokerWrapper` intercepts the encrypted blob, decrypts it back to real JSON, and hands it directly to your business logic layer!
 
@@ -19,7 +19,7 @@ When a downstream consumer uses our kit, the `EnterpriseBrokerWrapper` intercept
 Add the `encryption` block to the `enterprise` options.
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 // Secret key must be a 32-character long string for AES-256
 const MY_SECRET_KEY = 'super-secret-32-character-key-x1';

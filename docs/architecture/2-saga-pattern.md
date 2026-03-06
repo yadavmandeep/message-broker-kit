@@ -13,7 +13,7 @@ Instead of the `Inventory` holding items indefinitely, the Saga automatically ro
 ## The Setup
 
 ```typescript
-import { SagaCoordinator, MessageBrokerFactory } from 'message-broker-kit';
+import { SagaCoordinator, MessageBrokerFactory } from 'universal-broker-sdk';
 
 const broker = MessageBrokerFactory.create({ type: 'redis', options: { url: 'redis://localhost' }});
 const saga = new SagaCoordinator(broker);

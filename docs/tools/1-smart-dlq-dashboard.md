@@ -9,7 +9,7 @@ The package provides an optional built-in DataDog-styled Express dashboard (acce
 The Triage dashboard is meant to connect with your database implementation of broken events (usually managed by the `Transactional Outbox Pattern`).
 
 ```typescript
-import { SmartDLQDashboard, MessageBrokerFactory } from 'message-broker-kit';
+import { SmartDLQDashboard, MessageBrokerFactory } from 'universal-broker-sdk';
 
 // 1. Establish the broker connection to push retries back into it
 const broker = MessageBrokerFactory.create({

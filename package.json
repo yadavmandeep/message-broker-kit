@@ -1,5 +1,5 @@
 {
-  "name": "message-broker-kit",
+  "name": "universal-broker-sdk",
   "version": "1.1.0",
   "description": "A universal message broker kit for Node.js (Kafka, RabbitMQ, etc)",
   "main": "dist/index.js",

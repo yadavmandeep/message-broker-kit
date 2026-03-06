@@ -9,7 +9,7 @@ Welcome! If you just want to send a message from Application A and receive it in
 ## 📦 Step 1: Install the Package
 
 ```bash
-npm install message-broker-kit
+npm install universal-broker-sdk
 ```
 
 You also need to install the driver for your specific broker. For example, if you are using RabbitMQ, install `amqplib`:
@@ -34,7 +34,7 @@ npm install amqplib
 You do not need to write specific RabbitMQ or Kafka code. You just use the `MessageBrokerFactory`:
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 // 1. Create the instance
 const broker = MessageBrokerFactory.create({

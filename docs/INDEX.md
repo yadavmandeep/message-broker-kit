@@ -1,4 +1,4 @@
-# Message Broker Kit — Documentation Hub
+# Universal Broker SDK — Documentation Hub
 
 > **Enterprise-grade universal messaging for Node.js** — One API, any broker. Kafka, RabbitMQ, Redis, AWS SQS, ActiveMQ, NATS, MQTT — switch with a single config change.
 
@@ -82,4 +82,4 @@
 
 ---
 
-*Last updated for message-broker-kit v1.1.0*
+*Last updated for universal-broker-sdk v1.1.0*

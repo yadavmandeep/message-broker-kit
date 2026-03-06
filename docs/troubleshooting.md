@@ -1,6 +1,6 @@
 # Troubleshooting
 
-> Common errors, fixes, and debugging tips for Message Broker Kit.
+> Common errors, fixes, and debugging tips for Universal Broker SDK.
 
 ---
 

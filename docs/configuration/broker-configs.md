@@ -7,7 +7,7 @@
 ## Quick Switch Example
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from 'universal-broker-sdk';
 
 // RabbitMQ today
 const broker = MessageBrokerFactory.create({

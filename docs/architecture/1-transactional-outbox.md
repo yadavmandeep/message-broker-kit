@@ -13,7 +13,7 @@ By using the built-in `IOutboxStorage` and `OutboxProcessor`, you can save your 
 You must write a generic database connector that matches our `IOutboxStorage` interface:
 
 ```typescript
-import { MessageBrokerFactory, OutboxProcessor, IOutboxStorage } from 'message-broker-kit';
+import { MessageBrokerFactory, OutboxProcessor, IOutboxStorage } from 'universal-broker-sdk';
 
 // You write this class that connects to your Postgres/Mongo/MySQL
 class MyDatabaseOutbox implements IOutboxStorage {
