@@ -2,6 +2,10 @@
 
 Welcome! If you just want to send a message from Application A and receive it in Application B without worrying about the complex stuff, this guide is for you.
 
+**New here?** Start with this page, then explore the [Documentation Hub](../INDEX.md) for advanced topics.
+
+---
+
 ## 📦 Step 1: Install the Package
 
 ```bash
@@ -12,7 +16,18 @@ You also need to install the driver for your specific broker. For example, if yo
 ```bash
 npm install amqplib
 ```
-*(Other options: `kafkajs`, `redis`, `@aws-sdk/client-sqs`, `nats`, `mqtt`, `stompit`)*
+
+| Broker | Driver to Install |
+|--------|-------------------|
+| RabbitMQ | `amqplib` |
+| Kafka | `kafkajs` |
+| Redis | `redis` |
+| AWS SQS | `@aws-sdk/client-sqs` |
+| NATS | `nats` |
+| MQTT | `mqtt` |
+| ActiveMQ | `stompit` |
+
+**Need connection strings?** See [Broker Configuration Reference](../configuration/broker-configs.md).
 
 ## 🚀 Step 2: Initialize the Broker
 
@@ -85,7 +100,14 @@ async function startEmailWorker() {
 startEmailWorker();
 ```
 
-## 🎉 Conclusion
-That's it! You have successfully decoupled your applications using an enterprise-grade message broker kit.
+## 🎉 What's Next?
 
-Next up, do you want to secure sensitive user data? Check out **[Payload Encryption](../advanced-features/1-payload-encryption.md)**!
+You've set up basic publish/subscribe. Choose your path:
+
+| Goal | Next Step |
+|------|-----------|
+| **Use a different broker** (Kafka, Redis, SQS, etc.) | [Broker Configuration Reference](../configuration/broker-configs.md) |
+| **Secure sensitive data** (PII, payments) | [Payload Encryption](../advanced-features/1-payload-encryption.md) |
+| **Handle failures** (retries, DLQ, circuit breaker) | [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) |
+| **Quick lookup** | [Quick Reference](../quick-reference.md) |
+| **Full doc map** | [Documentation Hub](../INDEX.md) |

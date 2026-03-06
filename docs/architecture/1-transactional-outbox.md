@@ -1,6 +1,6 @@
 # Transactional Outbox Pattern 📦
 
-Solves the **dual-write problem** natively!
+Solves the **dual-write problem** natively! Works with any broker — RabbitMQ, Kafka, SQS, Redis, etc.
 
 ## The Problem
 If your API attempts to create a user in PostgreSQL and then publish a "UserCreated" event to RabbitMQ, an error in RabbitMQ could leave the database out of sync with downstream analytics teams. 
@@ -49,3 +49,5 @@ const outboxProcessor = new OutboxProcessor(broker, myDbStorage, {
 
 outboxProcessor.start(); // Runs your background worker job!
 ```
+
+**Related:** [Saga Pattern](./2-saga-pattern.md) | [Smart DLQ Dashboard](../tools/1-smart-dlq-dashboard.md) | [Doc Hub](../INDEX.md)

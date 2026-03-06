@@ -1,6 +1,8 @@
 # 🔐 End-To-End Payload Encryption
 
-In modern enterprise applications, particularly those handling **Payments** (PCI-DSS), **Healthcare** (HIPAA), or any **PII** (Personal Identifiable Information), you strictly cannot send plaintext credit-card numbers or Social Security Numbers via network streams. If your RabbitMQ UI or AWS SQS Queue is hacked or viewed by an admin, that data gets compromised!
+In modern enterprise applications, particularly those handling **Payments** (PCI-DSS), **Healthcare** (HIPAA), or any **PII** (Personal Identifiable Information), you strictly cannot send plaintext credit-card numbers or Social Security Numbers via network streams.
+
+**Works with all brokers** — RabbitMQ, Kafka, Redis, SQS, NATS, MQTT, ActiveMQ. Same config, same API. If your RabbitMQ UI or AWS SQS Queue is hacked or viewed by an admin, that data gets compromised!
 
 This kit provides **Zero-Trust Encryption** natively.
 
@@ -94,3 +96,5 @@ await broker.subscribe(async (msg) => {
 ---
 
 That's it! You've implemented bank-grade encryption across your event-driven systems without writing a single `crypto` parsing script! 🚀
+
+**Related:** [Resilience & DLQ](./2-resilience-dlq-retries.md) | [Broker Configs](../configuration/broker-configs.md) | [Doc Hub](../INDEX.md)

@@ -1,6 +1,6 @@
 # Smart Dead-Letter Triage UI 🧠
 
-When scaling messaging architectures, unhandled exceptions throw payloads into a Dead Letter Queue (`DLQ`). Finding those exact failed properties via CLI commands across 20 nodes is complex.
+When scaling messaging architectures, unhandled exceptions throw payloads into a Dead Letter Queue (`DLQ`). Finding those exact failed properties via CLI commands across 20 nodes is complex. Works with any broker — RabbitMQ, Kafka, SQS, Redis, etc.
 
 The package provides an optional built-in DataDog-styled Express dashboard (accessible via `/broker-ui`) allowing you to manually review, edit, and re-enqueue failed messages back into the master stream via one-click buttons.
 
@@ -36,3 +36,5 @@ console.log("Go to your browser and open: http://localhost:4000/broker-ui");
 - **Sleek Light/Dark Mode Integration**: Clean, modern grid design powered by TailwindCSS.
 - **Payload Inspect Node**: A scrolling IDE-formatted box shows exactly which properties caused an exception in JSON formatting without copying terminal pastes.
 - **SweetAlert2 Intervention**: Intercepts one-click `Enqueue` directives directly triggering a Broker Push + DB mark `PROCESSED` resolution.
+
+**Related:** [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) | [Transactional Outbox](../architecture/1-transactional-outbox.md) | [Doc Hub](../INDEX.md)

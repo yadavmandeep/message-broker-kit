@@ -1,6 +1,6 @@
 # Orchestration: Saga Pattern Coordinator 🚦
 
-Provides an orchestration layer `new SagaCoordinator(broker)` to handle **Long-Running Transactions** across distant microservices. 
+Provides an orchestration layer `new SagaCoordinator(broker)` to handle **Long-Running Transactions** across distant microservices. Works with any broker — Redis, RabbitMQ, Kafka, etc. 
 
 ## The Scenario
 If you have a workflow where:
@@ -35,3 +35,5 @@ async function processOrderCheckout() {
     }
 }
 ```
+
+**Related:** [Transactional Outbox](./1-transactional-outbox.md) | [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) | [Doc Hub](../INDEX.md)

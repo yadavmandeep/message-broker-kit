@@ -2,6 +2,8 @@
 
 Distributed systems are chaotic. Databases go offline. External APIs rate limit you. Microservices crash under load.
 
+**Broker-agnostic** — Same resilience config works with Kafka, RabbitMQ, Redis, SQS, NATS, MQTT, ActiveMQ.
+
 If your consumer fails while processing a message, what happens to that message? Usually, it's either **lost forever** or it **loops endlessly, crashing your system**.
 
 This package includes a 4-tier resilience strategy: **Rate Limiting -> Auto-Retries -> Circuit Breaker -> Dead Letter Queues (DLQ).**
@@ -123,3 +125,5 @@ broker.subscribe(myUnreliableHandler, 'OrdersQueue');
 7. Does NOT crash your Node process!
 
 **Pro Tip:** If you want to visually manage these failed events, refer to [Smart DLQ Triage UI](../tools/1-smart-dlq-dashboard.md).
+
+**Related:** [Payload Encryption](./1-payload-encryption.md) | [Broker Configs](../configuration/broker-configs.md) | [Troubleshooting](../troubleshooting.md) | [Doc Hub](../INDEX.md)
