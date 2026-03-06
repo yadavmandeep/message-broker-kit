@@ -28,17 +28,24 @@ For beginners and experts alike, this kit solves a major headache:
 
 ---
 
-## � Comprehensive Documentation
+## 📖 Comprehensive Documentation
 
 The kit has grown to encompass industry-grade enterprise functionality. To keep this README clean, please refer to our detailed topic-wise guides explicitly listed below:
 
-- 🟢 [1. Getting Started & Basic Usage](./docs/1-getting-started.md)
-- ⚙️ [2. Core Concepts & Adapters (Kafka, SQS, Redis, Hybrid)](./docs/2-core-concepts.md)
-- 🏢 [3. Enterprise Features (Encryption, Circuit Breaker, Rate Limit, etc.)](./docs/3-enterprise-features.md)
-- � [4. Transactional Outbox Pattern (Dual-write Prevention)](./docs/4-transactional-outbox.md)
-- 🚦 [5. Orchestration: Saga Pattern Coordinator (Rollbacks)](./docs/5-saga-pattern.md)
-- ☁️ [6. Serverless / Edge Computing Support (Stateless Fallback)](./docs/6-serverless-edge.md)
-- 🧠 [7. Smart Dead-Letter Triage UI (Visual Recovery Dashboard)](./docs/7-smart-dlq-ui.md)
+### 🟢 Getting Started
+- [1. Setup and Basic Publishing/Subscribing](./docs/getting-started/1-setup-and-basic-usage.md) 
+
+### 🏢 Advanced Enterprise Features
+- [1. End-To-End Payload Encryption (PII Protection)](./docs/advanced-features/1-payload-encryption.md)
+- [2. Handling Failures: Rate Limiting, Retries, Circuit Breakers & DLQs](./docs/advanced-features/2-resilience-dlq-retries.md)
+
+### 🏗️ Advanced Architecture Patterns
+- [1. Transactional Outbox Pattern (Dual-write Prevention)](./docs/architecture/1-transactional-outbox.md)
+- [2. Orchestration: Saga Pattern Coordinator (Rollbacks)](./docs/architecture/2-saga-pattern.md)
+- [3. Serverless / Edge Computing Support (Stateless Fallback)](./docs/architecture/3-serverless-edge.md)
+
+### 🛠️ Developer Tools
+- [1. Smart Dead-Letter Triage UI (Visual Recovery Dashboard)](./docs/tools/1-smart-dlq-dashboard.md)
 
 ---
 
