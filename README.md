@@ -1,149 +1,56 @@
-# KafkaMessageBroker
+# Message Broker Kit (Universal Messaging Client) 🚀
 
-`message-broker-kit` is a versatile messaging client for managing both Kafka and RabbitMQ. This package provides an easy-to-use API for publishing and subscribing to Kafka topics and RabbitMQ queues.
+🎉 **Welcome to `message-broker-kit`!** 
+Are you tired of rewriting the same connection and configuration code every time you switch between Kafka, RabbitMQ, or other streaming technologies? 
 
-## Installation
+`message-broker-kit` is a **Universal Messaging Engine** built in TypeScript. It acts as an abstraction layer (or a universal remote control) over popular message brokers. **You don't have to write specific code for any broker!** Just tell the kit which broker you want to use in the configuration, and it handles everything automatically.
 
-To install the package, use npm:
+---
 
-```bash
-npm install message-broker-kit
-```
+## 🌟 Why Use This Kit?
 
-## Usage
-Configuration
+For beginners and experts alike, this kit solves a major headache:
+- **Zero Lock-In:** Started with RabbitMQ but need scalable Kafka later? Or shifting to AWS SQS? Don't change your code. Just change 1 line in your configuration.
+- **Unified API:** The way you Publish or Subscribe to a message remains **exactly the same**, no matter what technology runs under the hood.
+- **TypeScript First:** Fully typed out of the box. Meaning your IDE (like VSCode) will auto-complete arguments and configurations for you.
+- **Enterprise-ready Pattern:** Uses Factory Design Pattern so your codebase stays clean.
 
-You can configure the KafkaMessageBroker with various options:
+---
 
-```javascript
-const KafkaMessageBroker = require('message-broker-kit');
+## 🏎️ Available Connectors (Adapters)
+- **Kafka** (Uses `kafkajs`)
+- **RabbitMQ** (Uses `amqplib`)
+- **Redis Pub/Sub** (Uses `redis`)
+- **AWS SQS** (Uses `@aws-sdk/client-sqs`)
+- **ActiveMQ** (Uses `stompit` for STOMP)
+- **NATS / JetStream** (Uses `nats`)
+- **MQTT / Mosquitto** (Uses `mqtt`)
 
-const kafkaConfig = {
-  clientId: 'my-app',
-  groupId: 'my-group',
-  brokers: ['localhost:9092'],
-  sessionTimeout: 10000,
-  heartbeatInterval: 3000,
-  topics: ['UserEvent']
-};
+---
 
-const broker = new KafkaMessageBroker(kafkaConfig);
-```
+## � Comprehensive Documentation
 
+The kit has grown to encompass industry-grade enterprise functionality. To keep this README clean, please refer to our detailed topic-wise guides explicitly listed below:
 
-## Creating Topics
-Create topics if they don't already exist:
+- 🟢 [1. Getting Started & Basic Usage](./docs/1-getting-started.md)
+- ⚙️ [2. Core Concepts & Adapters (Kafka, SQS, Redis, Hybrid)](./docs/2-core-concepts.md)
+- 🏢 [3. Enterprise Features (Encryption, Circuit Breaker, Rate Limit, etc.)](./docs/3-enterprise-features.md)
+- � [4. Transactional Outbox Pattern (Dual-write Prevention)](./docs/4-transactional-outbox.md)
+- 🚦 [5. Orchestration: Saga Pattern Coordinator (Rollbacks)](./docs/5-saga-pattern.md)
+- ☁️ [6. Serverless / Edge Computing Support (Stateless Fallback)](./docs/6-serverless-edge.md)
+- 🧠 [7. Smart Dead-Letter Triage UI (Visual Recovery Dashboard)](./docs/7-smart-dlq-ui.md)
 
-```javascript
-await broker.createTopics(['event1', 'event2']);
-```
+---
 
-## Publishing Messages
-Publish messages to a topic:
+## 🛣️ Roadmap (Future Scope & Ultimate Vision)
 
-```javascript
-const message = {
-  topic: 'UserEvent',
-  headers: { key: 'value' },
-  event: 'event-key',
-  message: { key: 'value' }
-};
+As we continue to push the boundaries of this wrapper into a globally scalable messaging layer, here is what we plan to tackle next:
 
-await broker.publish(message);
-```
+- 🤖 **AI-Driven Intelligent Routing**: Automatically analyzing payload intent/size and shifting messages to cheaper latency tier queues (e.g., dynamically moving from Kafka to SQS) during non-priority hours to save heavy cloud costs.
+- 📜 **Schema Registry Integration**: Full support for `Apache Avro / Protobuf` and integration with Confluent / AWS Glue Schema Registries for byte-level transmission efficiency.
+- 📊 **Metrics & APM Integrations**: Built-in `Prometheus /metrics` hook and DataDog plugins to report live processing bandwidth.
 
-## Subscribing to Topics
-Subscribe to a topic and handle incoming messages:
+---
 
-```javascript
-const messageHandler = async (message) => {
-  console.log('Received message:', message);
-};
-
-await broker.subscribe(messageHandler, 'UserEvent');
-```
-
-## Methods
-
-### `constructor(config)`
-
-Initializes the Kafka client with the provided configuration.
-
-**Parameters:**
-- `config` (Object): Configuration options for the Kafka client. It includes properties like `clientId`, `groupId`, `brokers`, `sessionTimeout`, `heartbeatInterval`, and `topics`.
-
-### `createTopics(topics)`
-
-Creates topics if they do not exist.
-
-**Parameters:**
-- `topics` (Array): An array of topic names to be created.
-
-### `connectProducer()`
-
-Connects the Kafka producer.
-
-**Returns:**
-- `Promise`: Resolves to the Kafka producer instance.
-
-### `disconnectProducer()`
-
-Disconnects the Kafka producer.
-
-**Returns:**
-- `Promise`: Resolves when the Kafka producer has been disconnected.
-
-### `publish(data)`
-
-Publishes a message to a topic.
-
-**Parameters:**
-- `data` (Object): The message data to be published. It includes:
-  - `topic` (String): The name of the topic.
-  - `headers` (Object): Optional headers for the message.
-  - `event` (String): The key for the message.
-  - `message` (Object): The message payload.
-
-**Returns:**
-- `Promise`: Resolves with the result of the publish operation.
-
-### `connectConsumer()`
-
-Connects the Kafka consumer.
-
-**Returns:**
-- `Promise`: Resolves to the Kafka consumer instance.
-
-### `disconnectConsumer()`
-
-Disconnects the Kafka consumer.
-
-**Returns:**
-- `Promise`: Resolves when the Kafka consumer has been disconnected.
-
-### `subscribe(messageHandler, topic)`
-
-Subscribes to a topic and processes incoming messages using the provided handler.
-
-**Parameters:**
-- `messageHandler` (Function): A function to handle incoming messages. It receives an object containing `headers`, `event`, and `data`.
-- `topic` (String): The name of the topic to subscribe to.
-
-**Returns:**
-- `Promise`: Resolves when the subscription is complete and the consumer starts processing messages.
-
-# Upcoming
-  1. RabbitMQ
-  2. ActiveMQ
-  3. ZeroMQ
-  4. Apache RocketMQ
-
-## Contributing
-Feel free to open issues or pull requests to contribute to the project.
-
-
-This format will ensure that the configuration and usage examples are properly highlighted in the `README.md` file.
-
-
-
-
+## 🤝 Contributing
+Found a bug, or want an adapter for a specific messaging system? Pull requests are absolutely welcome! Fork the project and start coding.

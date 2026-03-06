@@ -1,7 +1,6 @@
-// test/exampleUsage.js
-const BrokerFactory = require('../src/index');
+import { MessageBrokerFactory, BrokerConfig } from '../src/index';
 
-const kafkaConfig = {
+const kafkaConfig: BrokerConfig = {
   type: 'kafka',
   options: {
     clientId: 'custom-app',
@@ -10,7 +9,7 @@ const kafkaConfig = {
   }
 };
 
-const rabbitConfig = {
+const rabbitConfig: BrokerConfig = {
   type: 'rabbitmq',
   options: {
     url: 'amqp://localhost',
@@ -19,12 +18,12 @@ const rabbitConfig = {
 };
 
 // Trying to instantiate both (if the services were running locally)
-const useKafka = false; // Toggle to false to try RabbitMQ
+const useKafka: boolean = false; // Toggle to false to try RabbitMQ
 
 const config = useKafka ? kafkaConfig : rabbitConfig;
-const broker = BrokerFactory.create(config);
+const broker = MessageBrokerFactory.create(config);
 
-const messageHandler = async (message) => {
+const messageHandler = async (message: any) => {
   console.log('[MessageHandler] Received headers:', message.headers);
   console.log('[MessageHandler] Received event:', message.event);
   console.log('[MessageHandler] Received data:', message.data);
@@ -49,7 +48,7 @@ const messageHandler = async (message) => {
     await broker.subscribe(messageHandler, 'UserEvent');
     console.log('Subscribed to UserEvent successfully.');
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('Test could not connect to broker. Ensure broker is running locally:', error.message);
   }
 })();
