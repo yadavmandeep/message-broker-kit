@@ -1,14 +1,30 @@
 {
   "name": "message-broker-kit",
-  "version": "1.0.1",
-  "description": "A Kafka message broker class for Node.js",
-  "main": "src/KafkaMessageBroker.js",
+  "version": "1.1.0",
+  "description": "A universal message broker kit for Node.js (Kafka, RabbitMQ, etc)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "node test/exampleUsage.js"
+    "build": "tsc",
+    "test": "ts-node test/exampleUsage.ts"
   },
   "dependencies": {
-    "kafkajs": "^2.0.0" 
+    "@aws-sdk/client-sqs": "^3.1003.0",
+    "amqplib": "^0.10.9",
+    "kafkajs": "^2.0.0",
+    "mqtt": "^5.15.0",
+    "nats": "^2.29.3",
+    "redis": "^5.11.0",
+    "stompit": "^1.0.0"
   },
   "author": "Mandeep",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.8",
+    "@types/mqtt": "^0.0.34",
+    "@types/node": "^25.3.5",
+    "@types/stompit": "^0.26.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
 }
