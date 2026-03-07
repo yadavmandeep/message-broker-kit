@@ -5,21 +5,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "ts-node test/exampleUsage.ts"
+    "build": "tsc -b",
+    "test": "npm test --workspaces"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.1003.0",
-    "amqplib": "^0.10.9",
-    "axios": "^1.13.6",
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "kafkajs": "^2.0.0",
-    "lru-cache": "^11.2.6",
-    "mqtt": "^5.15.0",
-    "nats": "^2.29.3",
-    "redis": "^5.11.0",
-    "stompit": "^1.0.0",
     "uuid": "^13.0.0",
     "zod": "^4.3.6"
   },
