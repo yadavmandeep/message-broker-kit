@@ -8,13 +8,13 @@ Install the SDK from npm. Choose the packages you need for your project.
 
 ### Option 1: Factory (recommended)
 
-Use the factory so you can switch brokers by changing config. Install **`@universal-broker/cli`** plus the **adapter** for your broker:
+Use the factory so you can switch brokers by changing config. Install **`@universal-broker/cli`** plus the **broker package** for your message queue:
 
 ```bash
 npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
 
-| Broker   | Install this adapter            |
+| Broker   | Install this package            |
 |----------|----------------------------------|
 | RabbitMQ | `@universal-broker/rabbitmq`    |
 | Kafka    | `@universal-broker/kafka`       |
@@ -43,9 +43,9 @@ await broker.subscribe((msg) => console.log(msg.data), 'Orders');
 
 ---
 
-### Option 2: Core + adapter (manual)
+### Option 2: Core + broker (manual)
 
-Install **`@universal-broker/core`** and the adapter(s) you need. You create the adapter and wrap it with `EnterpriseBrokerWrapper`:
+Install **`@universal-broker/core`** and the broker package(s) you need. Create the broker instance and wrap it with `EnterpriseBrokerWrapper`:
 
 ```bash
 npm install @universal-broker/core @universal-broker/rabbitmq
@@ -53,9 +53,9 @@ npm install @universal-broker/core @universal-broker/rabbitmq
 
 ```typescript
 import { EnterpriseBrokerWrapper } from '@universal-broker/core';
-import { RabbitMQAdapter } from '@universal-broker/rabbitmq';
+import { RabbitMQBroker } from '@universal-broker/rabbitmq';
 
-const base = new RabbitMQAdapter({ url: 'amqp://localhost' });
+const base = new RabbitMQBroker({ url: 'amqp://localhost' });
 const broker = new EnterpriseBrokerWrapper(base, { /* enterprise options */ });
 await broker.publish({ topic: 'Orders', event: 'OrderCreated', message: { id: 1 } });
 await broker.subscribe((msg) => console.log(msg.data), 'Orders');
@@ -63,15 +63,17 @@ await broker.subscribe((msg) => console.log(msg.data), 'Orders');
 
 ---
 
-### Option 3: All adapters
+### Option 3: All broker packages
 
-To get core and every broker adapter in one go (no factory):
+To get core and every broker package in one go (no factory):
 
 ```bash
 npm install @universal-broker/all
 ```
 
-Then use **Option 2** style: import the adapter from its package (e.g. `@universal-broker/rabbitmq`) and wrap with `EnterpriseBrokerWrapper` from `@universal-broker/core`.
+Then use **Option 2** style: import the broker class from its package and wrap with `EnterpriseBrokerWrapper` from `@universal-broker/core`.
+
+**Broker class names (for Option 2):** `RabbitMQBroker`, `KafkaBroker`, `RedisBroker`, `AWSSQSBroker`, `NatsBroker`, `MQTTBroker`, `ActiveMQBroker`, `HybridBroker`, `ServerlessRESTBroker`.
 
 ---
 

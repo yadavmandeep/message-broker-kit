@@ -8,7 +8,7 @@ export interface MQTTConfig {
   clientId?: string;
 }
 
-export class MQTTAdapter implements IMessageBroker {
+export class MQTTBroker implements IMessageBroker {
   private url: string;
   private options: mqtt.IClientOptions;
   private producerClient: mqtt.MqttClient | null = null;
@@ -19,7 +19,7 @@ export class MQTTAdapter implements IMessageBroker {
     this.options = {
       username: config.username,
       password: config.password,
-      clientId: config.clientId || `mqtt_adapter_${Math.random().toString(16).slice(2, 8)}`
+      clientId: config.clientId || `mqtt_broker_${Math.random().toString(16).slice(2, 8)}`
     };
   }
 
@@ -64,14 +64,14 @@ export class MQTTAdapter implements IMessageBroker {
   public async subscribe(messageHandler: MessageHandler, topic: string): Promise<any> {
     const client = await this.connectConsumer();
     client.subscribe(topic, { qos: 1 }, (err: any) => {
-      if (err) console.error('[MQTTAdapter] Subscribe error', err);
+      if (err) console.error('[MQTTBroker] Subscribe error', err);
     });
     client.on('message', async (t: string, message: Buffer) => {
       if (t !== topic) return;
       try {
         const parsed = JSON.parse(message.toString());
         await messageHandler({ headers: parsed.headers || {}, event: parsed.event || 'unknown', data: parsed.data });
-      } catch (err) { console.error('[MQTTAdapter] Decode error', err); }
+      } catch (err) { console.error('[MQTTBroker] Decode error', err); }
     });
     return client;
   }

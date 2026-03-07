@@ -7,7 +7,7 @@ export interface RabbitMQConfig {
   exchangeType?: string;
 }
 
-export class RabbitMQAdapter implements IMessageBroker {
+export class RabbitMQBroker implements IMessageBroker {
   private url: string;
   private exchangeName: string;
   private exchangeType: string;
@@ -105,7 +105,7 @@ export class RabbitMQAdapter implements IMessageBroker {
           await messageHandler(inputMessage);
           channel.ack(msg);
         } catch (err) {
-          console.error('[RabbitMQAdapter] Error processing message:', err);
+          console.error('[RabbitMQBroker] Error processing message:', err);
           channel.nack(msg);
         }
       }

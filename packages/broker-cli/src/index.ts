@@ -16,48 +16,48 @@ export class MessageBrokerFactory {
     try {
       switch (type) {
         case 'kafka': {
-          const { KafkaAdapter } = await import('@universal-broker/kafka');
-          baseBroker = new KafkaAdapter(options);
+          const { KafkaBroker } = await import('@universal-broker/kafka');
+          baseBroker = new KafkaBroker(options);
           break;
         }
         case 'redis': {
-          const { RedisAdapter } = await import('@universal-broker/redis');
-          baseBroker = new RedisAdapter(options);
+          const { RedisBroker } = await import('@universal-broker/redis');
+          baseBroker = new RedisBroker(options);
           break;
         }
         case 'rabbitmq': {
-          const { RabbitMQAdapter } = await import('@universal-broker/rabbitmq');
-          baseBroker = new RabbitMQAdapter(options);
+          const { RabbitMQBroker } = await import('@universal-broker/rabbitmq');
+          baseBroker = new RabbitMQBroker(options);
           break;
         }
         case 'sqs': {
-          const { AWSSQSAdapter } = await import('@universal-broker/sqs');
-          baseBroker = new AWSSQSAdapter(options);
+          const { AWSSQSBroker } = await import('@universal-broker/sqs');
+          baseBroker = new AWSSQSBroker(options);
           break;
         }
         case 'nats': {
-          const { NatsAdapter } = await import('@universal-broker/nats');
-          baseBroker = new NatsAdapter(options);
+          const { NatsBroker } = await import('@universal-broker/nats');
+          baseBroker = new NatsBroker(options);
           break;
         }
         case 'mqtt': {
-          const { MQTTAdapter } = await import('@universal-broker/mqtt');
-          baseBroker = new MQTTAdapter(options);
+          const { MQTTBroker } = await import('@universal-broker/mqtt');
+          baseBroker = new MQTTBroker(options);
           break;
         }
         case 'activemq': {
-          const { ActiveMQAdapter } = await import('@universal-broker/activemq');
-          baseBroker = new ActiveMQAdapter(options);
+          const { ActiveMQBroker } = await import('@universal-broker/activemq');
+          baseBroker = new ActiveMQBroker(options);
           break;
         }
         case 'serverless': {
-          const { ServerlessRESTAdapter } = await import('@universal-broker/serverless');
-          baseBroker = new ServerlessRESTAdapter(options);
+          const { ServerlessRESTBroker } = await import('@universal-broker/serverless');
+          baseBroker = new ServerlessRESTBroker(options);
           break;
         }
         case 'hybrid': {
-          const { HybridAdapter } = await import('@universal-broker/hybrid');
-          baseBroker = new HybridAdapter(options);
+          const { HybridBroker } = await import('@universal-broker/hybrid');
+          baseBroker = new HybridBroker(options);
           break;
         }
         default:

@@ -1,6 +1,13 @@
-# @universal-broker/cli
+# Universal Broker CLI
 
-Command-line tool for managing DLQs, testing connections, and inspecting messages.
+The developers companion tool. Helps you set up brokers, verify installations, and generate boilerplate code.
+
+## Features
+
+- Seamless integration with Universal Broker SDK
+- Standardized Promise-based API
+- Automatic error handling and connection management
+- Fully typed for TypeScript development
 
 ## Installation
 
@@ -8,20 +15,15 @@ Command-line tool for managing DLQs, testing connections, and inspecting message
 npm install @universal-broker/cli
 ```
 
-## Features
-- Native CLI support
-- Seamless integration with @universal-broker/core
-- Full TypeScript support
+## Usage
 
----
+```typescript
+import { Broker } from '@universal-broker/cli';
+// See main documentation for implementation details
+```
 
-## 📖 Part of Universal Broker SDK
+## Documentation
 
-For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+For full enterprise features (Outbox, Deduplication, Telemetry, etc.), please refer to the main repository:
 
-👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
-
----
-
-## License
-MIT
+[Universal Broker SDK Documentation](https://github.com/man21/message-broker-kit)

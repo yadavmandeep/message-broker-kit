@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "mqtt": "^5.15.0",
-    "@universal-broker/core": "^1.1.0"
+    "@universal-broker/core": "^1.2.2"
   }
 }

@@ -1,37 +1,45 @@
 import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 import { RedisBroker } from '@universal-broker/redis';
-// Or you can import specifically:
-// import { KafkaBroker } from '@universal-broker/kafka';
-// import { RabbitMQBroker } from '@universal-broker/rabbitmq';
 
 async function main() {
   // Initialize the specific underlying broker
-  const redisAdapter = new RedisBroker({
-    host: 'localhost',
-    port: 6379,
+  const redisBroker = new RedisBroker({
+    url: 'redis://localhost:6379'
   });
 
-  // Wrap it with Enterprise features (outbox, telemetry, retry, etc.)
-  const broker = new EnterpriseBrokerWrapper(redisAdapter, {
-    enableOutbox: false,
-    retryCount: 3
+  // Wrap it with Enterprise features (idempotency, retry, etc.)
+  const broker = new EnterpriseBrokerWrapper(redisBroker, {
+    autoRetry: {
+      enabled: true,
+      maxRetries: 3
+    },
+    idempotency: {
+      enabled: true
+    }
   });
 
   // Connect
-  await broker.connect();
+  await broker.connectProducer();
+  await broker.connectConsumer();
   console.log('Connected to Broker!');
 
   // Subscribe to a topic
-  await broker.subscribe('user.signup', async (message) => {
-    console.log('Received message:', message);
-  });
+  await broker.subscribe(async (message) => {
+    console.log('Received message:', message.data);
+    console.log('Event type:', message.event);
+  }, 'user.signup');
 
   // Publish to a topic
-  await broker.publish('user.signup', { userId: 123, email: 'test@example.com' });
+  await broker.publish({
+    topic: 'user.signup',
+    event: 'USER_CREATED',
+    message: { userId: 123, email: 'test@example.com' }
+  });
 
   // Disconnect after some time
   setTimeout(async () => {
-    await broker.disconnect();
+    await broker.disconnectProducer();
+    await broker.disconnectConsumer();
     console.log('Disconnected');
   }, 2000);
 }

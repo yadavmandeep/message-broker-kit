@@ -8,7 +8,7 @@ export interface ActiveMQConfig {
   password?: string;
 }
 
-export class ActiveMQAdapter implements IMessageBroker {
+export class ActiveMQBroker implements IMessageBroker {
   private connectOptions: any;
   private producerClient: stompit.Client | null = null;
   private consumerClient: stompit.Client | null = null;
@@ -66,7 +66,7 @@ export class ActiveMQAdapter implements IMessageBroker {
   public async subscribe(messageHandler: MessageHandler, topic: string): Promise<any> {
     const client = await this.connectConsumer();
     client.subscribe({ destination: `/queue/${topic}`, ack: 'client-individual' }, (error: any, message: any) => {
-      if (error) { console.error('[ActiveMQAdapter] subscribe error', error); return; }
+      if (error) { console.error('[ActiveMQBroker] subscribe error', error); return; }
       message.readString('utf-8', async (error: any, body: string) => {
         if (error) return;
         let parsed: any = {};
@@ -74,7 +74,7 @@ export class ActiveMQAdapter implements IMessageBroker {
         try {
           await messageHandler({ headers: message.headers as any, event: parsed.event || 'unknown', data: parsed.data || parsed });
           client.ack(message);
-        } catch (handlerError) { console.error('[ActiveMQAdapter] handler error', handlerError); }
+        } catch (handlerError) { console.error('[ActiveMQBroker] handler error', handlerError); }
       });
     });
     return client;

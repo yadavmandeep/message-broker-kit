@@ -1,8 +1,8 @@
 # Serverless and Edge Support
 
-Some runtimes do not allow long-lived TCP connections. For example, on Vercel, Cloudflare Workers, or AWS Lambda, you often cannot use drivers that keep a socket open (e.g. `amqplib` for RabbitMQ or `kafkajs` for Kafka). The **serverless adapter** lets you **publish** messages by sending an HTTP request to a proxy that then talks to your broker. The same `publish()` API is used; only the transport changes.
+Some runtimes do not allow long-lived TCP connections. For example, on Vercel, Cloudflare Workers, or AWS Lambda, you often cannot use drivers that keep a socket open (e.g. `amqplib` for RabbitMQ or `kafkajs` for Kafka). The **ServerlessRESTBroker** lets you **publish** messages by sending an HTTP request to a proxy that then talks to your broker. The same `publish()` API is used; only the transport changes.
 
-**Important:** This adapter supports **publish only**. It does not support `subscribe()` (consuming). In serverless/edge environments, consumption is usually done via webhooks, event triggers, or a separate long-running consumer service.
+**Important:** ServerlessRESTBroker supports **publish only**. It does not support `subscribe()` (consuming). In serverless/edge environments, consumption is usually done via webhooks, event triggers, or a separate long-running consumer service.
 
 ---
 
@@ -57,16 +57,16 @@ export async function handler(req: Request) {
 }
 ```
 
-The serverless adapter sends the standard payload (topic, event, message, headers) to `restProxyUrl`. Your proxy must accept that format and publish to your broker; then return a success response (e.g. 2xx). If the proxy returns an error or times out, `publish()` will throw.
+ServerlessRESTBroker sends the standard payload (topic, event, message, headers) to `restProxyUrl`. Your proxy must accept that format and publish to your broker; then return a success response (e.g. 2xx). If the proxy returns an error or times out, `publish()` will throw.
 
 ---
 
 ## Subscribe (consumption) in serverless
 
-`subscribe()` is **not** supported by the serverless adapter. For consumption in a serverless/edge context you typically:
+`subscribe()` is **not** supported by ServerlessRESTBroker. For consumption in a serverless/edge context you typically:
 
 - Use a **webhook**: the broker or a gateway calls your HTTP endpoint when a message is available.
-- Run a **separate consumer service** (e.g. a long-running Node process or container) that uses a normal broker adapter (e.g. RabbitMQ or Kafka) and calls your business logic or forwards to your serverless function.
+- Run a **separate consumer service** (e.g. a long-running Node process or container) that uses a normal broker (e.g. RabbitMQBroker or KafkaBroker) and calls your business logic or forwards to your serverless function.
 
 ---
 

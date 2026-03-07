@@ -6,7 +6,7 @@ export interface RedisConfig {
   password?: string;
 }
 
-export class RedisAdapter implements IMessageBroker {
+export class RedisBroker implements IMessageBroker {
   private url: string;
   private password?: string;
   private publisher: any | null = null;
@@ -68,7 +68,7 @@ export class RedisAdapter implements IMessageBroker {
         };
         await messageHandler(incomingMessage);
       } catch (err) {
-        console.error('[RedisAdapter] Error parsing or handling message:', err);
+        console.error('[RedisBroker] Error parsing or handling message:', err);
       }
     });
     

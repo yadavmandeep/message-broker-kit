@@ -1,6 +1,13 @@
-# @universal-broker/hybrid
+# Universal Broker Hybrid Broker
 
-Hybrid adapter for multi-broker failover and fan-out support.
+Allows routing messages across multiple brokers simultaneously (e.g., Local Redis for speed, Cloud Kafka for persistence).
+
+## Features
+
+- Seamless integration with Universal Broker SDK
+- Standardized Promise-based API
+- Automatic error handling and connection management
+- Fully typed for TypeScript development
 
 ## Installation
 
@@ -14,23 +21,12 @@ npm install @universal-broker/hybrid
 import { HybridBroker } from '@universal-broker/hybrid';
 import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-// Initialize and use with Core wrapper for full features
+// HybridBroker takes an array of broker instances. See main documentation.
+const broker = new EnterpriseBrokerWrapper(new HybridBroker([redisBroker, kafkaBroker]), {});
 ```
 
-## Features
-- Native Hybrid support
-- Seamless integration with @universal-broker/core
-- Full TypeScript support
+## Documentation
 
----
+For full enterprise features (Outbox, Deduplication, Telemetry, etc.), please refer to the main repository:
 
-## 📖 Part of Universal Broker SDK
-
-For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
-
-👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
-
----
-
-## License
-MIT
+[Universal Broker SDK Documentation](https://github.com/man21/message-broker-kit)

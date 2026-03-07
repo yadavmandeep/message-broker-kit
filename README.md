@@ -32,14 +32,14 @@
 
 ## Quick Start
 
-Install the factory package and the adapter for your broker ([Installation](./docs/installation-and-packages.md)):
+Install the factory package and the specific package for your broker ([Installation](./docs/installation-and-packages.md)):
 
 ```bash
 npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
 
 ```typescript
-import { MessageBrokerFactory } from '@universal-broker/cli';
+import {  MessageBrokerFactory  } from '@universal-broker/cli';
 
 const broker = await MessageBrokerFactory.create({
   type: 'rabbitmq',
@@ -82,4 +82,4 @@ await broker.subscribe((msg) => console.log(msg.data), 'Orders');
 
 ## Contributing
 
-Found a bug or want a new adapter? Pull requests welcome. Fork and code.
+Found a bug or want a new broker? Pull requests welcome. Fork and code.

@@ -1,6 +1,13 @@
-# @universal-broker/rabbitmq
+# Universal Broker RabbitMQ Broker
 
-RabbitMQ adapter using amqplib for Universal Broker SDK.
+Robust RabbitMQ implementation using `amqplib`. Supports exchange bindings, persistent queues, and manual acknowledgments.
+
+## Features
+
+- Seamless integration with Universal Broker SDK
+- Standardized Promise-based API
+- Automatic error handling and connection management
+- Fully typed for TypeScript development
 
 ## Installation
 
@@ -14,23 +21,12 @@ npm install @universal-broker/rabbitmq
 import { RabbitMQBroker } from '@universal-broker/rabbitmq';
 import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-// Initialize and use with Core wrapper for full features
+const broker = new EnterpriseBrokerWrapper(new RabbitMQBroker({ url: 'amqp://localhost' }), {});
+// Or use MessageBrokerFactory from @universal-broker/cli. See main documentation.
 ```
 
-## Features
-- Native RabbitMQ support
-- Seamless integration with @universal-broker/core
-- Full TypeScript support
+## Documentation
 
----
+For full enterprise features (Outbox, Deduplication, Telemetry, etc.), please refer to the main repository:
 
-## 📖 Part of Universal Broker SDK
-
-For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
-
-👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
-
----
-
-## License
-MIT
+[Universal Broker SDK Documentation](https://github.com/man21/message-broker-kit)

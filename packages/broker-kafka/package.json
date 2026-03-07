@@ -1,7 +1,7 @@
 {
   "name": "@universal-broker/kafka",
   "version": "1.2.2",
-  "description": "Kafka adapter for Universal Broker SDK",
+  "description": "Kafka broker for Universal Broker SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "kafkajs": "^2.0.0",
-    "@universal-broker/core": "^1.1.0"
+    "@universal-broker/core": "^1.2.2"
   }
 }

@@ -11,7 +11,7 @@
 | Document | Description | When to Read |
 |----------|-------------|--------------|
 | [**Setup & Basic Usage**](./getting-started/1-setup-and-basic-usage.md) | Install, connect, publish, subscribe — first 5 minutes. Written so beginners can follow step by step. | Start here |
-| [**Installation**](./installation-and-packages.md) | What to install from npm and how to import (factory vs core + adapter). | Before you start |
+| [**Installation**](./installation-and-packages.md) | What to install from npm and how to import (factory vs core + broker). | Before you start |
 | [**Broker Configuration Reference**](./configuration/broker-configs.md) | Connection strings and options for every supported broker (Kafka, RabbitMQ, Redis, SQS, NATS, MQTT, ActiveMQ, Hybrid, Serverless). | When choosing or switching brokers |
 | [**Features Overview**](./features-overview.md) | List of every feature with a short description and example. | When you want to see all features in one place |
 | [**Quick Reference**](./quick-reference.md) | Cheat sheet — API, config snippets, common patterns. | When you need a quick lookup |

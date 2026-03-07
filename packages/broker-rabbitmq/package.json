@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "amqplib": "^0.10.9",
-    "@universal-broker/core": "^1.1.0"
+    "@universal-broker/core": "^1.2.2"
   }
 }

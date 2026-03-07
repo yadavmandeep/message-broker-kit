@@ -10,13 +10,13 @@ export interface AWSSQSConfig {
   queueUrl: string;
 }
 
-export class AWSSQSAdapter implements IMessageBroker {
+export class AWSSQSBroker implements IMessageBroker {
   private sqsClient: SQSClient;
   private queueUrl: string;
   private isConsuming: boolean = false;
 
   constructor(config: AWSSQSConfig) {
-    if (!config.queueUrl) throw new Error('[AWSSQSAdapter] Queue URL is required.');
+    if (!config.queueUrl) throw new Error('[AWSSQSBroker] Queue URL is required.');
     this.queueUrl = config.queueUrl;
     const clientConfig: any = { region: config.region || 'us-east-1' };
     if (config.credentials) clientConfig.credentials = config.credentials;
@@ -72,7 +72,7 @@ export class AWSSQSAdapter implements IMessageBroker {
             }
           }
         }
-      } catch (err) { console.error('[AWSSQSAdapter] Polling error:', err); }
+      } catch (err) { console.error('[AWSSQSBroker] Polling error:', err); }
       if (this.isConsuming) setImmediate(poll);
     };
     poll();

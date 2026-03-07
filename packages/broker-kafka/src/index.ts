@@ -10,7 +10,7 @@ export interface KafkaConfig {
   topics?: string[];
 }
 
-export class KafkaAdapter implements IMessageBroker {
+export class KafkaBroker implements IMessageBroker {
   private kafka: Kafka;
   private producer: Producer | null = null;
   private consumer: Consumer | null = null;

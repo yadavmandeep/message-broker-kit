@@ -33,7 +33,7 @@ const broker = await MessageBrokerFactory.create({
   options: { url: 'amqp://localhost' },
 });
 
-// Use the same storage you use for OutboxProcessor, or an adapter that returns FAILED messages.
+// Use the same storage you use for OutboxProcessor, or a storage implementation that returns FAILED messages.
 const failedMessageStorage = new MyOutboxStorage();
 
 const dashboard = new SmartDLQDashboard(broker, failedMessageStorage, {

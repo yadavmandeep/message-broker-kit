@@ -16,19 +16,19 @@
     "universal-broker": "dist/cli.js"
   },
   "dependencies": {
-    "@universal-broker/core": "^1.1.0",
+    "@universal-broker/core": "^1.2.2",
     "inquirer": "^12.4.1",
     "chalk": "^5.4.1"
   },
   "optionalDependencies": {
-    "@universal-broker/kafka": "^1.1.0",
-    "@universal-broker/redis": "^1.1.0",
-    "@universal-broker/rabbitmq": "^1.1.0",
-    "@universal-broker/sqs": "^1.1.0",
-    "@universal-broker/nats": "^1.1.0",
-    "@universal-broker/mqtt": "^1.1.0",
-    "@universal-broker/activemq": "^1.1.0",
-    "@universal-broker/serverless": "^1.1.0",
-    "@universal-broker/hybrid": "^1.1.0"
+    "@universal-broker/kafka": "^1.2.2",
+    "@universal-broker/redis": "^1.2.2",
+    "@universal-broker/rabbitmq": "^1.2.2",
+    "@universal-broker/sqs": "^1.2.2",
+    "@universal-broker/nats": "^1.2.2",
+    "@universal-broker/mqtt": "^1.2.2",
+    "@universal-broker/activemq": "^1.2.2",
+    "@universal-broker/serverless": "^1.2.2",
+    "@universal-broker/hybrid": "^1.2.2"
   }
 }

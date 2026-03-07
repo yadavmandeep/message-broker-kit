@@ -1,11 +1,11 @@
 import { IMessageBroker, PublishData, MessageHandler } from '@universal-broker/core';
 
-export class HybridAdapter implements IMessageBroker {
+export class HybridBroker implements IMessageBroker {
   private brokers: IMessageBroker[] = [];
 
   constructor(brokers: IMessageBroker[]) {
     if (!brokers || brokers.length === 0)
-      throw new Error('HybridAdapter requires at least one underlying broker.');
+      throw new Error('HybridBroker requires at least one underlying broker.');
     this.brokers = brokers;
   }
 
@@ -20,7 +20,7 @@ export class HybridAdapter implements IMessageBroker {
   public async publish(data: PublishData): Promise<any> {
     const results = await Promise.allSettled(this.brokers.map(b => b.publish(data)));
     const failed = results.filter(r => r.status === 'rejected');
-    if (failed.length > 0) console.error(`[HybridAdapter] Failed to publish to ${failed.length} brokers.`);
+    if (failed.length > 0) console.error(`[HybridBroker] Failed to publish to ${failed.length} brokers.`);
     return results;
   }
 

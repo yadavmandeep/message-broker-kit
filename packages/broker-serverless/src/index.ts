@@ -7,16 +7,16 @@ export interface ServerlessOptions {
   timeoutMs?: number;
 }
 
-export class ServerlessRESTAdapter implements IMessageBroker {
+export class ServerlessRESTBroker implements IMessageBroker {
   private options: ServerlessOptions;
 
   constructor(options: ServerlessOptions) {
-    if (!options.restProxyUrl) throw new Error('restProxyUrl is required for ServerlessRESTAdapter');
+    if (!options.restProxyUrl) throw new Error('restProxyUrl is required for ServerlessRESTBroker');
     this.options = { ...options, timeoutMs: options.timeoutMs || 5000 };
   }
 
   public async connectProducer(): Promise<any> {
-    console.log(`[ServerlessRESTAdapter] stateless connection to ${this.options.restProxyUrl}`);
+    console.log(`[ServerlessRESTBroker] stateless connection to ${this.options.restProxyUrl}`);
     return true;
   }
   public async disconnectProducer(): Promise<void> {}
@@ -34,6 +34,6 @@ export class ServerlessRESTAdapter implements IMessageBroker {
   public async disconnectConsumer(): Promise<void> {}
 
   public async subscribe(messageHandler: MessageHandler, topic: string): Promise<any> {
-    throw new Error('ServerlessRESTAdapter does not support subscribe(). Use webhooks in edge environments.');
+    throw new Error('ServerlessRESTBroker does not support subscribe(). Use webhooks in edge environments.');
   }
 }

@@ -5,7 +5,7 @@ export interface NatsConfig {
   servers?: string | string[];
 }
 
-export class NatsAdapter implements IMessageBroker {
+export class NatsBroker implements IMessageBroker {
   private servers: string | string[];
   private connection: NatsConnection | null = null;
   private jc = JSONCodec();
@@ -45,7 +45,7 @@ export class NatsAdapter implements IMessageBroker {
         try {
           const parsed: any = this.jc.decode(m.data);
           await messageHandler({ headers: parsed.headers || {}, event: parsed.event, data: parsed.data });
-        } catch (err) { console.error('[NatsAdapter] Message decode error', err); }
+        } catch (err) { console.error('[NatsBroker] Message decode error', err); }
       }
     })();
     return sub;

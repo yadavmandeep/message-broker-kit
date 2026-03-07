@@ -6,14 +6,14 @@
 
 ## Installation
 
-**Factory (recommended):** install the CLI package and the adapter(s) you need:
+**Factory (recommended):** install the CLI package and the broker package(s) you need:
 
 ```bash
 npm install @universal-broker/cli @universal-broker/rabbitmq
 # Or: npx universal-broker setup
 ```
 
-**All adapters:** `npm install @universal-broker/all` (then use core + adapter manually; see [Installation](./installation-and-packages.md)).
+**All broker packages:** `npm install @universal-broker/all` (then use core + broker manually; see [Installation](./installation-and-packages.md)).
 
 ---
 

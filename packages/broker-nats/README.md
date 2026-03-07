@@ -1,6 +1,13 @@
-# @universal-broker/nats
+# Universal Broker NATS Broker
 
-NATS and JetStream adapter for ultra-low latency messaging.
+Efficient NATS broker for high-throughput messaging requirements.
+
+## Features
+
+- Seamless integration with Universal Broker SDK
+- Standardized Promise-based API
+- Automatic error handling and connection management
+- Fully typed for TypeScript development
 
 ## Installation
 
@@ -14,23 +21,12 @@ npm install @universal-broker/nats
 import { NatsBroker } from '@universal-broker/nats';
 import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-// Initialize and use with Core wrapper for full features
+const broker = new EnterpriseBrokerWrapper(new NatsBroker({ servers: 'nats://localhost:4222' }), {});
+// Or use MessageBrokerFactory from @universal-broker/cli. See main documentation.
 ```
 
-## Features
-- Native NATS support
-- Seamless integration with @universal-broker/core
-- Full TypeScript support
+## Documentation
 
----
+For full enterprise features (Outbox, Deduplication, Telemetry, etc.), please refer to the main repository:
 
-## 📖 Part of Universal Broker SDK
-
-For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
-
-👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
-
----
-
-## License
-MIT
+[Universal Broker SDK Documentation](https://github.com/man21/message-broker-kit)

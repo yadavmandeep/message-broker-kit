@@ -10,15 +10,15 @@ This guide gets you from zero to sending and receiving messages in a few minutes
 
 Install from npm. [Installation](../installation-and-packages.md) has all options; below is the usual path.
 
-**Option A — Factory (recommended):** install the CLI package and the adapter for your broker:
+**Option A — Factory (recommended):** install the CLI package and the broker package for your message queue:
 
 ```bash
 npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
 
-**Option B — All adapters:** `npm install @universal-broker/all` (then use core + adapter manually; see [Installation](../installation-and-packages.md)).
+**Option B — All broker packages:** `npm install @universal-broker/all` (then use core + broker manually; see [Installation](../installation-and-packages.md)).
 
-| Broker | Adapter to install (with Option A) |
+| Broker | Package to install (with Option A) |
 |--------|------------------------------------|
 | RabbitMQ | `@universal-broker/rabbitmq` |
 | Kafka | `@universal-broker/kafka` |
@@ -37,9 +37,9 @@ Use the factory so you don't write broker-specific code. Import from the package
 ```typescript
 import { MessageBrokerFactory } from '@universal-broker/cli';
 
-// 1. Create the instance (use the adapter you installed, e.g. @universal-broker/rabbitmq)
+// 1. Create the instance (use the broker package you installed, e.g. @universal-broker/rabbitmq)
 const broker = await MessageBrokerFactory.create({
-  type: 'rabbitmq', // Change to 'kafka', 'redis', etc. when you install that adapter
+  type: 'rabbitmq', // Change to 'kafka', 'redis', etc. when you install that broker package
   options: { url: 'amqp://localhost' },
 });
 ```

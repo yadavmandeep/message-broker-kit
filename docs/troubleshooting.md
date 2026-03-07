@@ -1,6 +1,6 @@
 # Troubleshooting
 
-> Common errors, fixes, and debugging tips for Message Broker Kit.
+> Common errors, fixes, and debugging tips for Universal Broker SDK.
 
 ---
 
@@ -38,7 +38,7 @@ options: {
 
 ### "restProxyUrl is required" (Serverless)
 
-**Cause:** Serverless adapter needs an HTTP proxy URL.
+**Cause:** Serverless broker (`ServerlessRESTBroker`) requires an HTTP proxy URL.
 
 **Fix:** Provide a proxy that accepts POST with `{ payload: PublishData }` and forwards to your broker.
 
