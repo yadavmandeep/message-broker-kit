@@ -1,12 +1,13 @@
 {
   "name": "universal-broker-sdk",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A universal message broker kit for Node.js (Kafka, RabbitMQ, etc)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
-    "test": "npm test --workspaces"
+    "test": "npm test --workspaces",
+    "publish:all": "npm run build && npm publish --workspace=packages/broker-core --access public && npm publish --workspace=packages/broker-kafka --access public && npm publish --workspace=packages/broker-rabbitmq --access public && npm publish --workspace=packages/broker-redis --access public && npm publish --workspace=packages/broker-sqs --access public && npm publish --workspace=packages/broker-nats --access public && npm publish --workspace=packages/broker-mqtt --access public && npm publish --workspace=packages/broker-activemq --access public && npm publish --workspace=packages/broker-serverless --access public && npm publish --workspace=packages/broker-hybrid --access public && npm publish --workspace=packages/broker-cli --access public && npm publish --workspace=packages/broker --access public"
   },
   "workspaces": [
     "packages/*"

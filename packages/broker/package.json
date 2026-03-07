@@ -1,0 +1,19 @@
+{
+  "name": "@universal-broker/all",
+  "version": "1.2.0",
+  "description": "Meta package installing all universal-broker packages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@universal-broker/core": "^1.1.0",
+    "@universal-broker/kafka": "^1.1.0",
+    "@universal-broker/rabbitmq": "^1.1.0",
+    "@universal-broker/redis": "^1.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

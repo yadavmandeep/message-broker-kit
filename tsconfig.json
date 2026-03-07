@@ -1,16 +1,17 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/core" },
-    { "path": "./packages/kafka" },
-    { "path": "./packages/redis" },
-    { "path": "./packages/rabbitmq" },
-    { "path": "./packages/sqs" },
-    { "path": "./packages/nats" },
-    { "path": "./packages/mqtt" },
-    { "path": "./packages/activemq" },
-    { "path": "./packages/serverless" },
-    { "path": "./packages/hybrid" },
-    { "path": "./packages/cli" }
+    { "path": "./packages/broker-core" },
+    { "path": "./packages/broker-kafka" },
+    { "path": "./packages/broker-redis" },
+    { "path": "./packages/broker-rabbitmq" },
+    { "path": "./packages/broker-sqs" },
+    { "path": "./packages/broker-nats" },
+    { "path": "./packages/broker-mqtt" },
+    { "path": "./packages/broker-activemq" },
+    { "path": "./packages/broker-serverless" },
+    { "path": "./packages/broker-hybrid" },
+    { "path": "./packages/broker-cli" },
+    { "path": "./packages/broker" }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../broker-core" },
+    { "path": "../broker-kafka" },
+    { "path": "../broker-redis" },
+    { "path": "../broker-rabbitmq" },
+    { "path": "../broker-sqs" },
+    { "path": "../broker-nats" },
+    { "path": "../broker-mqtt" },
+    { "path": "../broker-activemq" },
+    { "path": "../broker-serverless" },
+    { "path": "../broker-hybrid" }
+  ]
+}

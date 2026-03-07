@@ -1,0 +1,34 @@
+{
+  "name": "@universal-broker/cli",
+  "version": "1.2.0",
+  "description": "Universal Message Broker SDK - CLI and Core Wrapper",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "universal-broker": "dist/cli.js"
+  },
+  "dependencies": {
+    "@universal-broker/core": "^1.1.0",
+    "inquirer": "^12.4.1",
+    "chalk": "^5.4.1"
+  },
+  "optionalDependencies": {
+    "@universal-broker/kafka": "^1.1.0",
+    "@universal-broker/redis": "^1.1.0",
+    "@universal-broker/rabbitmq": "^1.1.0",
+    "@universal-broker/sqs": "^1.1.0",
+    "@universal-broker/nats": "^1.1.0",
+    "@universal-broker/mqtt": "^1.1.0",
+    "@universal-broker/activemq": "^1.1.0",
+    "@universal-broker/serverless": "^1.1.0",
+    "@universal-broker/hybrid": "^1.1.0"
+  }
+}
