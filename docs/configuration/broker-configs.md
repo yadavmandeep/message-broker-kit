@@ -7,18 +7,18 @@
 ## Quick Switch Example
 
 ```typescript
-import { MessageBrokerFactory } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
 
-// RabbitMQ today
-const broker = MessageBrokerFactory.create({
+// RabbitMQ today (install @universal-broker/cli and @universal-broker/rabbitmq)
+const broker = await MessageBrokerFactory.create({
   type: 'rabbitmq',
-  options: { url: 'amqp://localhost' }
+  options: { url: 'amqp://localhost' },
 });
 
-// Tomorrow: switch to Kafka — same code, just change config
-const broker = MessageBrokerFactory.create({
+// Tomorrow: switch to Kafka — same code, just change config (install @universal-broker/kafka)
+const broker = await MessageBrokerFactory.create({
   type: 'kafka',
-  options: { brokers: ['localhost:9092'] }
+  options: { brokers: ['localhost:9092'] },
 });
 
 // Your publish/subscribe code stays identical
@@ -43,7 +43,7 @@ await broker.publish({ topic: 'Orders', event: 'OrderCreated', message: { id: 1 
 **Driver:** `kafkajs` — `npm install kafkajs`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'kafka',
   options: {
     brokers: ['kafka-1:9092', 'kafka-2:9092'],
@@ -67,7 +67,7 @@ MessageBrokerFactory.create({
 **Driver:** `amqplib` — `npm install amqplib`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'rabbitmq',
   options: {
     url: 'amqp://user:pass@rabbit.example.com:5672/vhost',
@@ -89,7 +89,7 @@ MessageBrokerFactory.create({
 **Driver:** `redis` — `npm install redis`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'redis',
   options: {
     url: 'redis://localhost:6379',
@@ -111,7 +111,7 @@ MessageBrokerFactory.create({
 **Driver:** `@aws-sdk/client-sqs` — `npm install @aws-sdk/client-sqs`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'sqs',
   options: {
     queueUrl: 'https://sqs.us-east-1.amazonaws.com/123456789/my-queue',
@@ -134,7 +134,7 @@ MessageBrokerFactory.create({
 **Driver:** `stompit` — `npm install stompit`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'activemq',
   options: {
     host: 'activemq.example.com',
@@ -156,7 +156,7 @@ MessageBrokerFactory.create({
 **Driver:** `nats` — `npm install nats`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'nats',
   options: {
     servers: ['nats://nats1:4222', 'nats://nats2:4222']
@@ -178,7 +178,7 @@ MessageBrokerFactory.create({
 **Driver:** `mqtt` — `npm install mqtt`
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'mqtt',
   options: {
     url: 'mqtt://broker.example.com:1883',
@@ -199,7 +199,7 @@ Publishes to **all** underlying brokers. Use for multi-region, redundancy, or mi
 | `options` | `BrokerConfig[]` | Array of broker configs |
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'hybrid',
   options: [
     { type: 'rabbitmq', options: { url: 'amqp://primary' } },
@@ -223,7 +223,7 @@ For environments where TCP sockets are not allowed (Vercel, Cloudflare Workers, 
 **Note:** `subscribe()` is not supported — use webhooks for consumption.
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'serverless',
   options: {
     restProxyUrl: 'https://my-worker.workers.dev/publish',
@@ -240,7 +240,7 @@ MessageBrokerFactory.create({
 All brokers support the same `enterprise` block. See [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) and [Payload Encryption](../advanced-features/1-payload-encryption.md).
 
 ```typescript
-MessageBrokerFactory.create({
+await MessageBrokerFactory.create({
   type: 'rabbitmq',
   options: { url: 'amqp://localhost' },
   enterprise: {

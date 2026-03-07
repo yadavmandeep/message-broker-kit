@@ -1,6 +1,6 @@
 # @universal-broker/redis
 
-Redis adapter for Universal Broker SDK
+Redis Pub/Sub adapter using ioredis for Universal Broker SDK.
 
 ## Installation
 
@@ -8,8 +8,29 @@ Redis adapter for Universal Broker SDK
 npm install @universal-broker/redis
 ```
 
-## Documentation
+## Usage
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+```typescript
+import { RedisBroker } from '@universal-broker/redis';
+import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+// Initialize and use with Core wrapper for full features
+```
+
+## Features
+- Native Redis support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
+
+---
+
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT

@@ -1,47 +1,46 @@
 # 1. Setup and Basic Publishing/Subscribing
 
-Welcome! If you just want to send a message from Application A and receive it in Application B without worrying about the complex stuff, this guide is for you.
+This guide gets you from zero to sending and receiving messages in a few minutes. No prior message-queue experience is required: you install the package, pick a broker, create a broker instance, then call `publish` and `subscribe`. The same steps work for RabbitMQ, Kafka, Redis, AWS SQS, and the other supported brokers.
 
-**New here?** Start with this page, then explore the [Documentation Hub](../INDEX.md) for advanced topics.
+**New here?** Start with this page. When you are ready for more (encryption, retries, DLQ, etc.), use the [Documentation Hub](../INDEX.md) or [Features Overview](../features-overview.md).
 
 ---
 
-## 📦 Step 1: Install the Package
+## 📦 Step 1: Install the packages you need
+
+Install from npm. [Installation](../installation-and-packages.md) has all options; below is the usual path.
+
+**Option A — Factory (recommended):** install the CLI package and the adapter for your broker:
 
 ```bash
-npm install universal-broker-sdk
+npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
 
-You also need to install the driver for your specific broker. For example, if you are using RabbitMQ, install `amqplib`:
-```bash
-npm install amqplib
-```
+**Option B — All adapters:** `npm install @universal-broker/all` (then use core + adapter manually; see [Installation](../installation-and-packages.md)).
 
-| Broker | Driver to Install |
-|--------|-------------------|
-| RabbitMQ | `amqplib` |
-| Kafka | `kafkajs` |
-| Redis | `redis` |
-| AWS SQS | `@aws-sdk/client-sqs` |
-| NATS | `nats` |
-| MQTT | `mqtt` |
-| ActiveMQ | `stompit` |
+| Broker | Adapter to install (with Option A) |
+|--------|------------------------------------|
+| RabbitMQ | `@universal-broker/rabbitmq` |
+| Kafka | `@universal-broker/kafka` |
+| Redis | `@universal-broker/redis` |
+| AWS SQS | `@universal-broker/sqs` |
+| NATS | `@universal-broker/nats` |
+| MQTT | `@universal-broker/mqtt` |
+| ActiveMQ | `@universal-broker/activemq` |
 
-**Need connection strings?** See [Broker Configuration Reference](../configuration/broker-configs.md).
+You can also run `npx universal-broker setup` to pick brokers interactively. **Need connection strings?** See [Broker Configuration Reference](../configuration/broker-configs.md).
 
 ## 🚀 Step 2: Initialize the Broker
 
-You do not need to write specific RabbitMQ or Kafka code. You just use the `MessageBrokerFactory`:
+Use the factory so you don't write broker-specific code. Import from the package you installed:
 
 ```typescript
-import { MessageBrokerFactory } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
 
-// 1. Create the instance
-const broker = MessageBrokerFactory.create({
-  type: 'rabbitmq', // Change this to 'kafka' or 'redis' when extending!
-  options: {
-    url: 'amqp://localhost' // Your connection string
-  }
+// 1. Create the instance (use the adapter you installed, e.g. @universal-broker/rabbitmq)
+const broker = await MessageBrokerFactory.create({
+  type: 'rabbitmq', // Change to 'kafka', 'redis', etc. when you install that adapter
+  options: { url: 'amqp://localhost' },
 });
 ```
 

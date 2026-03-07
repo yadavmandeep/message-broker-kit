@@ -1,6 +1,6 @@
 # Universal Broker SDK — Documentation Hub
 
-> **Enterprise-grade universal messaging for Node.js** — One API, any broker. Kafka, RabbitMQ, Redis, AWS SQS, ActiveMQ, NATS, MQTT — switch with a single config change.
+> **Enterprise-grade universal messaging for Node.js** — One API, any broker. Install from npm and use in your project ([Installation](./installation-and-packages.md)).
 
 ---
 
@@ -10,9 +10,11 @@
 
 | Document | Description | When to Read |
 |----------|-------------|--------------|
-| [**Setup & Basic Usage**](./getting-started/1-setup-and-basic-usage.md) | Install, connect, publish, subscribe — first 5 minutes | Start here |
-| [**Broker Configuration Reference**](./configuration/broker-configs.md) | Connection strings & options for every supported broker | When choosing or switching brokers |
-| [**Quick Reference**](./quick-reference.md) | Cheat sheet — API, config snippets, common patterns | When you need a quick lookup |
+| [**Setup & Basic Usage**](./getting-started/1-setup-and-basic-usage.md) | Install, connect, publish, subscribe — first 5 minutes. Written so beginners can follow step by step. | Start here |
+| [**Installation**](./installation-and-packages.md) | What to install from npm and how to import (factory vs core + adapter). | Before you start |
+| [**Broker Configuration Reference**](./configuration/broker-configs.md) | Connection strings and options for every supported broker (Kafka, RabbitMQ, Redis, SQS, NATS, MQTT, ActiveMQ, Hybrid, Serverless). | When choosing or switching brokers |
+| [**Features Overview**](./features-overview.md) | List of every feature with a short description and example. | When you want to see all features in one place |
+| [**Quick Reference**](./quick-reference.md) | Cheat sheet — API, config snippets, common patterns. | When you need a quick lookup |
 
 ---
 
@@ -77,9 +79,10 @@
 
 ## 📖 Related Links
 
+- [Features Overview](./features-overview.md) — every feature with examples  
 - [Troubleshooting](./troubleshooting.md) — common errors and fixes  
 - [Changelog](../CHANGELOG.md) — version history (if present)
 
 ---
 
-*Last updated for universal-broker-sdk v1.1.0*
+*Universal Broker SDK*

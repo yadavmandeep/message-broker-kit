@@ -1,33 +1,30 @@
 # Quick Reference
 
-> Cheat sheet for Universal Broker SDK — API, config snippets, and common patterns.
+> Cheat sheet for Universal Broker SDK — API, config snippets, and common patterns. [Installation](./installation-and-packages.md).
 
 ---
 
 ## Installation
 
+**Factory (recommended):** install the CLI package and the adapter(s) you need:
+
 ```bash
-npm install universal-broker-sdk
-# Plus driver for your broker, e.g.:
-npm install amqplib      # RabbitMQ
-npm install kafkajs      # Kafka
-npm install redis        # Redis
-npm install @aws-sdk/client-sqs  # AWS SQS
-npm install nats         # NATS
-npm install mqtt         # MQTT
-npm install stompit      # ActiveMQ
+npm install @universal-broker/cli @universal-broker/rabbitmq
+# Or: npx universal-broker setup
 ```
+
+**All adapters:** `npm install @universal-broker/all` (then use core + adapter manually; see [Installation](./installation-and-packages.md)).
 
 ---
 
 ## Create Broker (Minimal)
 
 ```typescript
-import { MessageBrokerFactory } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
 
-const broker = MessageBrokerFactory.create({
+const broker = await MessageBrokerFactory.create({
   type: 'rabbitmq',  // kafka | redis | sqs | nats | mqtt | activemq | hybrid | serverless
-  options: { url: 'amqp://localhost' }
+  options: { url: 'amqp://localhost' },
 });
 ```
 
@@ -76,14 +73,33 @@ enterprise: {
 }
 ```
 
-Details: [Resilience & DLQ](./advanced-features/2-resilience-dlq-retries.md) | [Encryption](./advanced-features/1-payload-encryption.md)
+Details: [Resilience & DLQ](./advanced-features/2-resilience-dlq-retries.md) · [Encryption](./advanced-features/1-payload-encryption.md) · [Features Overview](./features-overview.md)
+
+---
+
+## Schema validation (Zod)
+
+Validate the message body before publish. Invalid payloads throw; the message is not sent.
+
+```typescript
+import { z } from 'zod';
+const OrderSchema = z.object({ orderId: z.number(), total: z.number().positive() });
+
+await broker.publish({
+  topic: 'Orders',
+  event: 'OrderCreated',
+  message: { orderId: 1, total: 99.99 },
+  schema: OrderSchema,
+});
+```
 
 ---
 
 ## Transactional Outbox (Snippet)
 
 ```typescript
-import { MessageBrokerFactory, OutboxProcessor, IOutboxStorage } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
+import { OutboxProcessor, IOutboxStorage } from '@universal-broker/core';
 
 class MyOutbox implements IOutboxStorage {
   async fetchPendingMessages(limit: number) { /* SELECT * FROM outbox WHERE status='PENDING' LIMIT ? */ }
@@ -91,7 +107,7 @@ class MyOutbox implements IOutboxStorage {
   async markAsFailed(id: string, error: string) { /* UPDATE outbox SET status='FAILED' */ }
 }
 
-const broker = MessageBrokerFactory.create({ type: 'rabbitmq', options: { url: 'amqp://localhost' } });
+const broker = await MessageBrokerFactory.create({ type: 'rabbitmq', options: { url: 'amqp://localhost' } });
 const outbox = new OutboxProcessor(broker, new MyOutbox(), { pollIntervalMs: 5000, batchSize: 100 });
 outbox.start();
 ```
@@ -103,9 +119,10 @@ Full guide: [Transactional Outbox](./architecture/1-transactional-outbox.md)
 ## Saga Pattern (Snippet)
 
 ```typescript
-import { SagaCoordinator, MessageBrokerFactory } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
+import { SagaCoordinator } from '@universal-broker/core';
 
-const broker = MessageBrokerFactory.create({ type: 'redis', options: { url: 'redis://localhost' } });
+const broker = await MessageBrokerFactory.create({ type: 'redis', options: { url: 'redis://localhost' } });
 const saga = new SagaCoordinator(broker);
 
 saga.startSaga('order-tx-123');
@@ -125,9 +142,10 @@ Full guide: [Saga Pattern](./architecture/2-saga-pattern.md)
 ## Smart DLQ Dashboard
 
 ```typescript
-import { SmartDLQDashboard, MessageBrokerFactory } from 'universal-broker-sdk';
+import { MessageBrokerFactory } from '@universal-broker/cli';
+import { SmartDLQDashboard } from '@universal-broker/core';
 
-const broker = MessageBrokerFactory.create({ type: 'rabbitmq', options: { url: 'amqp://localhost' } });
+const broker = await MessageBrokerFactory.create({ type: 'rabbitmq', options: { url: 'amqp://localhost' } });
 const dashboard = new SmartDLQDashboard(broker, myDeadLetterDb, { port: 4000, apiPath: '/api/dlq' });
 dashboard.start();
 // Open http://localhost:4000/broker-ui
@@ -151,6 +169,7 @@ Full guide: [Smart DLQ Dashboard](./tools/1-smart-dlq-dashboard.md)
 ## Related Docs
 
 - [Documentation Hub](./INDEX.md)
+- [Features Overview](./features-overview.md) — every feature with examples
 - [Setup & Basic Usage](./getting-started/1-setup-and-basic-usage.md)
 - [Broker Configs](./configuration/broker-configs.md)
 - [Troubleshooting](./troubleshooting.md)

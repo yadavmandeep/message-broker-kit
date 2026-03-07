@@ -1,6 +1,6 @@
 {
   "name": "@universal-broker/all",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Meta package installing all universal-broker packages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,16 +8,16 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@universal-broker/core": "^1.2.1",
-    "@universal-broker/kafka": "^1.2.1",
-    "@universal-broker/rabbitmq": "^1.2.1",
-    "@universal-broker/redis": "^1.2.1",
-    "@universal-broker/sqs": "^1.2.1",
-    "@universal-broker/nats": "^1.2.1",
-    "@universal-broker/mqtt": "^1.2.1",
-    "@universal-broker/activemq": "^1.2.1",
-    "@universal-broker/serverless": "^1.2.1",
-    "@universal-broker/hybrid": "^1.2.1"
+    "@universal-broker/core": "^1.2.2",
+    "@universal-broker/kafka": "^1.2.2",
+    "@universal-broker/rabbitmq": "^1.2.2",
+    "@universal-broker/redis": "^1.2.2",
+    "@universal-broker/sqs": "^1.2.2",
+    "@universal-broker/nats": "^1.2.2",
+    "@universal-broker/mqtt": "^1.2.2",
+    "@universal-broker/activemq": "^1.2.2",
+    "@universal-broker/serverless": "^1.2.2",
+    "@universal-broker/hybrid": "^1.2.2"
   },
   "publishConfig": {
     "access": "public"

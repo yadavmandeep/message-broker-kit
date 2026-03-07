@@ -1,6 +1,6 @@
 # @universal-broker/core
 
-Core interfaces and logic for Universal Broker SDK
+Core logic, interfaces, and enterprise patterns for Universal Broker SDK.
 
 ## Installation
 
@@ -8,8 +8,20 @@ Core interfaces and logic for Universal Broker SDK
 npm install @universal-broker/core
 ```
 
-## Documentation
+## Features
+- Native Core support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+---
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT

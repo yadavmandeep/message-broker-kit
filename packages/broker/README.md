@@ -1,6 +1,6 @@
 # @universal-broker/all
 
-Meta package installing all universal-broker packages
+Meta-package including all available broker adapters for Universal Broker SDK.
 
 ## Installation
 
@@ -8,8 +8,20 @@ Meta package installing all universal-broker packages
 npm install @universal-broker/all
 ```
 
-## Documentation
+## Features
+- Native All Adapters support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+---
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT

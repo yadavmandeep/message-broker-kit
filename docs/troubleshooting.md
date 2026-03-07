@@ -1,6 +1,6 @@
 # Troubleshooting
 
-> Common errors, fixes, and debugging tips for Universal Broker SDK.
+> Common errors, fixes, and debugging tips for Message Broker Kit.
 
 ---
 
@@ -158,5 +158,6 @@ Use the [Smart DLQ Dashboard](./tools/1-smart-dlq-dashboard.md) to inspect, edit
 
 ## Getting More Help
 
+- [Features Overview](./features-overview.md) — list of every feature with examples  
 - [Documentation Hub](./INDEX.md) — full doc map  
 - [Quick Reference](./quick-reference.md) — API cheat sheet

@@ -1,6 +1,6 @@
 # @universal-broker/cli
 
-Universal Message Broker SDK - CLI and Core Wrapper
+Command-line tool for managing DLQs, testing connections, and inspecting messages.
 
 ## Installation
 
@@ -8,8 +8,20 @@ Universal Message Broker SDK - CLI and Core Wrapper
 npm install @universal-broker/cli
 ```
 
-## Documentation
+## Features
+- Native CLI support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+---
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT

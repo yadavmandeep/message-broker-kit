@@ -1,6 +1,6 @@
 # @universal-broker/hybrid
 
-Universal Message Broker SDK Adapter
+Hybrid adapter for multi-broker failover and fan-out support.
 
 ## Installation
 
@@ -8,8 +8,29 @@ Universal Message Broker SDK Adapter
 npm install @universal-broker/hybrid
 ```
 
-## Documentation
+## Usage
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+```typescript
+import { HybridBroker } from '@universal-broker/hybrid';
+import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+// Initialize and use with Core wrapper for full features
+```
+
+## Features
+- Native Hybrid support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
+
+---
+
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT

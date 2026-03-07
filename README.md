@@ -1,106 +1,85 @@
-# Universal Message Broker Toolkit
+# Universal Broker SDK
 
-A production-ready Node.js/TypeScript abstraction library for wrapping multiple message brokers (Kafka, Redis, RabbitMQ, etc.) under a single, unified API. Includes enterprise features like Outbox Pattern, Deduplication, Retries, Circuit Breaker, and Telemetry/Observability natively!
+> **Enterprise-grade messaging for Node.js** — One API, any broker. Kafka, RabbitMQ, Redis, AWS SQS, ActiveMQ, NATS, MQTT. Install from npm and use in your app.
 
-## Features
+---
 
-- **Multi-Broker Support:** Switch between Kafka, Redis, RabbitMQ, AWS SQS seamlessly without changing your app code.
-- **Enterprise Ready:** Message Deduplication, Transactional Outbox, Retry with Exponential Backoff.
-- **TypeScript First:** First-class types that are strictly validated.
-- **Plugin Architecture:** Write your own plugins to connect any other broker you might be running.
-- **Unified API:** Publish and Subscribe methods work the same way regardless of the underlying broker logic.
+## Why Universal Broker SDK?
 
-## Monorepo Architecture
+- **Zero Lock-In** — Started with RabbitMQ, need Kafka later? Change one line. Same code.
+- **Unified API** — `publish()` and `subscribe()` work identically across all brokers.
+- **Broker-Agnostic** — No matter which message queue you use, the API stays the same.
+- **TypeScript First** — Full types, IDE autocomplete, clean codebase.
+- **Enterprise Patterns** — Encryption, retries, circuit breaker, DLQ, transactional outbox, saga.
 
-The project is structured logically as a monorepo consisting of the following core scopes published natively under the `@universal-broker` npm scope:
-- `@universal-broker/core`: Common interfaces, Outbox Processor, Message Envelope parsing, basic telemetry wrapping.
-- `@universal-broker/rabbitmq`: Adapter specifically leveraging `amqplib` to parse RabbitMQ.
-- `@universal-broker/kafka`: Adapter specifically connecting leveraging `kafkajs`.
-- `@universal-broker/redis`: Adapter specifically connecting leveraging `ioredis`.
-- `@universal-broker/all` (meta-package): Provides `import { ... } from '@universal-broker/all'` installing all sub-brokers out-of-the-box for ease.
+---
 
-## Installation
+## Supported Brokers
 
-Using npm, simply specify the specific broker implementation you wish to leverage, and the core implementation will automatically be fetched!
+| Broker | Type | Package name |
+|--------|------|----------------|
+| Kafka | `kafka` | `@universal-broker/kafka` |
+| RabbitMQ | `rabbitmq` | `@universal-broker/rabbitmq` |
+| Redis | `redis` | `@universal-broker/redis` |
+| AWS SQS | `sqs` | `@universal-broker/sqs` |
+| ActiveMQ | `activemq` | `@universal-broker/activemq` |
+| NATS / JetStream | `nats` | `@universal-broker/nats` |
+| MQTT | `mqtt` | `@universal-broker/mqtt` |
+| Hybrid (fan-out) | `hybrid` | `@universal-broker/hybrid` |
+| Serverless / Edge | `serverless` | `@universal-broker/serverless` |
+
+---
+
+## Quick Start
+
+Install the factory package and the adapter for your broker ([Installation](./docs/installation-and-packages.md)):
 
 ```bash
-# If using RabbitMQ
-npm i @universal-broker/rabbitmq @universal-broker/core
-
-# Or Kafka
-npm i @universal-broker/kafka @universal-broker/core
-
-# Or if you just wish to play around with all brokers:
-npm i @universal-broker/all
+npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
-
-## Basic Example
 
 ```typescript
-import { EnterpriseBrokerWrapper } from '@universal-broker/core';
-import { RedisBroker } from '@universal-broker/redis';
+import { MessageBrokerFactory } from '@universal-broker/cli';
 
-// Or you can import specifically:
-// import { KafkaBroker } from '@universal-broker/kafka';
-// import { RabbitMQBroker } from '@universal-broker/rabbitmq';
+const broker = await MessageBrokerFactory.create({
+  type: 'rabbitmq',
+  options: { url: 'amqp://localhost' },
+});
 
-async function main() {
-  // Initialize the specific underlying broker
-  const redisAdapter = new RedisBroker({
-    host: 'localhost',
-    port: 6379,
-  });
-
-  // Wrap it with Enterprise features (outbox, telemetry, retry, etc.)
-  const broker = new EnterpriseBrokerWrapper(redisAdapter, {
-    enableOutbox: false,
-    retryCount: 3
-  });
-
-  // Connect
-  await broker.connect();
-  console.log('Connected to Broker!');
-
-  // Subscribe to a topic
-  await broker.subscribe('user.signup', async (message) => {
-    console.log('Received message:', message);
-  });
-
-  // Publish to a topic
-  await broker.publish('user.signup', { userId: 123, email: 'test@example.com' });
-
-  // Disconnect after some time
-  setTimeout(async () => {
-    await broker.disconnect();
-    console.log('Disconnected');
-  }, 2000);
-}
-
-main().catch(console.error);
+await broker.publish({ topic: 'Orders', event: 'OrderCreated', message: { id: 1 } });
+await broker.subscribe((msg) => console.log(msg.data), 'Orders');
 ```
 
-## Creating Your Own Adapter
+---
 
-If you want to implement your own sub-broker package, simply follow the abstract class provided by `@universal-broker/core`:
+## Documentation
 
-```ts
-import { IMessageBroker } from '@universal-broker/core';
+**[📚 Documentation Hub](./docs/INDEX.md)** — Full map, learning paths, and links.
 
-export class CustomBroker implements IMessageBroker {
-    async connect(): Promise<void> { /* ... */ }
-    async disconnect(): Promise<void> { /* ... */ }
-    async publish(topic: string, data: any): Promise<void> { /* ... */ }
-    async subscribe(topic: string, handler: (data: any) => Promise<void>): Promise<void> { /* ... */ }
-}
-```
+### By Level
 
-## Contributions
+| Level | Docs |
+|-------|------|
+| **Beginner** | [Setup & Basic Usage](./docs/getting-started/1-setup-and-basic-usage.md) · [Broker Configs](./docs/configuration/broker-configs.md) · [Quick Reference](./docs/quick-reference.md) |
+| **Intermediate** | [Payload Encryption](./docs/advanced-features/1-payload-encryption.md) · [Resilience & DLQ](./docs/advanced-features/2-resilience-dlq-retries.md) · [Smart DLQ Dashboard](./docs/tools/1-smart-dlq-dashboard.md) |
+| **Advanced** | [Transactional Outbox](./docs/architecture/1-transactional-outbox.md) · [Saga Pattern](./docs/architecture/2-saga-pattern.md) · [Serverless / Edge](./docs/architecture/3-serverless-edge.md) |
 
-Feel free to open PRs, this monorepo is architected heavily adhering to TS NPM workspaces logic ensuring isolation per-package!
+### Quick Links
 
-## Publishing (Maintainers Only)
+- [Installation](./docs/installation-and-packages.md) — What to install and how to import
+- [Troubleshooting](./docs/troubleshooting.md)
+- [Broker Configuration Reference](./docs/configuration/broker-configs.md) — All queues, one place
 
-To publish all components publicly to NPM natively under the `@universal-broker` scope:
-```bash
-npm run publish:all
-```
+---
+
+## Roadmap
+
+- 🤖 AI-driven intelligent routing
+- 📜 Schema Registry (Avro / Protobuf)
+- 📊 Prometheus / DataDog metrics
+
+---
+
+## Contributing
+
+Found a bug or want a new adapter? Pull requests welcome. Fork and code.

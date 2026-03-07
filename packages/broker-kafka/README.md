@@ -1,6 +1,6 @@
 # @universal-broker/kafka
 
-Kafka adapter for Universal Broker SDK
+Apache Kafka adapter using kafkajs for Universal Broker SDK.
 
 ## Installation
 
@@ -8,8 +8,29 @@ Kafka adapter for Universal Broker SDK
 npm install @universal-broker/kafka
 ```
 
-## Documentation
+## Usage
 
-Please refer to the parent monolithic repository for full instructions, examples, and telemetry/outbox setups:
+```typescript
+import { KafkaBroker } from '@universal-broker/kafka';
+import { EnterpriseBrokerWrapper } from '@universal-broker/core';
 
-[Universal Broker SDK GitHub Documentation](https://github.com/mandeepyadav)
+// Initialize and use with Core wrapper for full features
+```
+
+## Features
+- Native Kafka support
+- Seamless integration with @universal-broker/core
+- Full TypeScript support
+
+---
+
+## 📖 Part of Universal Broker SDK
+
+For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
+
+👉 [**Universal Broker SDK GitHub**](https://github.com/mandeepyadav/message-broker-kit)
+
+---
+
+## License
+MIT
