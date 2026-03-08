@@ -1,6 +1,6 @@
 {
   "name": "@universal-broker/sqs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.1003.0",
-    "@universal-broker/core": "^1.2.2"
+    "@universal-broker/core": "^1.2.3"
   },
   "author": "yadavmandeep",
   "license": "MIT",

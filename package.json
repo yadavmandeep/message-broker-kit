@@ -1,6 +1,6 @@
 {
   "name": "universal-broker-sdk",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A universal message broker kit for Node.js (Kafka, RabbitMQ, etc)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
