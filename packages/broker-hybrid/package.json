@@ -3,6 +3,21 @@
   "version": "1.2.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "hybrid",
+    "routing",
+    "failover",
+    "multi-broker",
+    "fan-out",
+    "redundancy"
+  ],
   "scripts": {
     "build": "tsc"
   },

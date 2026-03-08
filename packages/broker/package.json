@@ -4,6 +4,17 @@
   "description": "Meta package installing all universal-broker packages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "sdk",
+    "all-in-one"
+  ],
   "scripts": {
     "build": "tsc"
   },

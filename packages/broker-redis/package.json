@@ -4,6 +4,17 @@
   "description": "Redis broker for Universal Broker SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "redis",
+    "pubsub"
+  ],
   "scripts": {
     "build": "tsc"
   },

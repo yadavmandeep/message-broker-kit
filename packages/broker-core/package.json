@@ -4,6 +4,24 @@
   "description": "Core interfaces and logic for Universal Broker SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "core",
+    "outbox-pattern",
+    "saga-pattern",
+    "circuit-breaker",
+    "resilience",
+    "idempotency",
+    "dead-letter-queue",
+    "opentelemetry",
+    "typescript"
+  ],
   "scripts": {
     "build": "tsc"
   },

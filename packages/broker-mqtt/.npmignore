@@ -1,3 +1,6 @@
 src/
+tests/
 tsconfig.json
+jest.config.js
 *.tsbuildinfo
+.npmignore

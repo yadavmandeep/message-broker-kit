@@ -7,7 +7,41 @@
   "scripts": {
     "build": "tsc -b",
     "test": "npm test --workspaces",
-    "publish:all": "npm run build && npm publish --workspace=packages/broker-core --access public && npm publish --workspace=packages/broker-kafka --access public && npm publish --workspace=packages/broker-rabbitmq --access public && npm publish --workspace=packages/broker-redis --access public && npm publish --workspace=packages/broker-sqs --access public && npm publish --workspace=packages/broker-nats --access public && npm publish --workspace=packages/broker-mqtt --access public && npm publish --workspace=packages/broker-activemq --access public && npm publish --workspace=packages/broker-serverless --access public && npm publish --workspace=packages/broker-hybrid --access public && npm publish --workspace=packages/broker-cli --access public && npm publish --workspace=packages/broker --access public"
+    "version-bump": "node -e \"const fs = require('fs'); const path = require('path'); const pkgsDir = 'packages'; const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')); const parts = pkg.version.split('.'); parts[2] = parseInt(parts[2]) + 1; const newVersion = parts.join('.'); function updateFile(filePath) { if (!fs.existsSync(filePath)) return; const p = JSON.parse(fs.readFileSync(filePath, 'utf8')); p.version = newVersion; ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'].forEach(type => { if (p[type]) { Object.keys(p[type]).forEach(dep => { if (dep.startsWith('@universal-broker/')) p[type][dep] = '^' + newVersion; }); } }); fs.writeFileSync(filePath, JSON.stringify(p, null, 2) + '\\n'); } updateFile('package.json'); fs.readdirSync(pkgsDir).forEach(f => updateFile(path.join(pkgsDir, f, 'package.json'))); console.log('Bumped to ' + newVersion);\"",
+    "publish:all": "npm run build && npm publish --workspaces --access public",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.{ts,md,json}\""
+  },
+  "keywords": [
+    "message-broker",
+    "sdk",
+    "pubsub",
+    "queue",
+    "events",
+    "event-bus",
+    "messaging",
+    "microservices",
+    "event-driven",
+    "distributed-systems",
+    "kafka",
+    "rabbitmq",
+    "redis",
+    "sqs",
+    "nats",
+    "mqtt",
+    "activemq",
+    "serverless",
+    "outbox-pattern",
+    "saga-pattern",
+    "enterprise-patterns",
+    "circuit-breaker",
+    "resilience",
+    "opentelemetry",
+    "typescript",
+    "nodejs"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
   },
   "workspaces": [
     "packages/*"

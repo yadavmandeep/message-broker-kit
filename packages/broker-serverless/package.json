@@ -3,6 +3,22 @@
   "version": "1.2.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "serverless",
+    "lambda",
+    "vercel",
+    "edge",
+    "http-proxy",
+    "rest-api",
+    "cloudflare-workers"
+  ],
   "scripts": {
     "build": "tsc"
   },

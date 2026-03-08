@@ -4,14 +4,26 @@
   "description": "Universal Message Broker SDK - CLI and Core Wrapper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "message-broker",
+    "cli",
+    "setup",
+    "automation",
+    "generator",
+    "scaffolding",
+    "developer-tools"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/cli.js",
     "dev": "ts-node src/cli.ts"
   },
-  "files": [
-    "dist"
-  ],
   "bin": {
     "universal-broker": "dist/cli.js"
   },
