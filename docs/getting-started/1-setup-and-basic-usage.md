@@ -1,32 +1,46 @@
 # 1. Setup and Basic Publishing/Subscribing
 
-Welcome! If you just want to send a message from Application A and receive it in Application B without worrying about the complex stuff, this guide is for you.
+This guide gets you from zero to sending and receiving messages in a few minutes. No prior message-queue experience is required: you install the package, pick a broker, create a broker instance, then call `publish` and `subscribe`. The same steps work for RabbitMQ, Kafka, Redis, AWS SQS, and the other supported brokers.
 
-## 📦 Step 1: Install the Package
+**New here?** Start with this page. When you are ready for more (encryption, retries, DLQ, etc.), use the [Documentation Hub](../INDEX.md) or [Features Overview](../features-overview.md).
+
+---
+
+## 📦 Step 1: Install the packages you need
+
+Install from npm. [Installation](../installation-and-packages.md) has all options; below is the usual path.
+
+**Option A — Factory (recommended):** install the CLI package and the broker package for your message queue:
 
 ```bash
-npm install message-broker-kit
+npm install @universal-broker/cli @universal-broker/rabbitmq
 ```
 
-You also need to install the driver for your specific broker. For example, if you are using RabbitMQ, install `amqplib`:
-```bash
-npm install amqplib
-```
-*(Other options: `kafkajs`, `redis`, `@aws-sdk/client-sqs`, `nats`, `mqtt`, `stompit`)*
+**Option B — All broker packages:** `npm install @universal-broker/all` (then use core + broker manually; see [Installation](../installation-and-packages.md)).
+
+| Broker | Package to install (with Option A) |
+|--------|------------------------------------|
+| RabbitMQ | `@universal-broker/rabbitmq` |
+| Kafka | `@universal-broker/kafka` |
+| Redis | `@universal-broker/redis` |
+| AWS SQS | `@universal-broker/sqs` |
+| NATS | `@universal-broker/nats` |
+| MQTT | `@universal-broker/mqtt` |
+| ActiveMQ | `@universal-broker/activemq` |
+
+You can also run `npx universal-broker setup` to pick brokers interactively. **Need connection strings?** See [Broker Configuration Reference](../configuration/broker-configs.md).
 
 ## 🚀 Step 2: Initialize the Broker
 
-You do not need to write specific RabbitMQ or Kafka code. You just use the `MessageBrokerFactory`:
+Use the factory so you don't write broker-specific code. Import from the package you installed:
 
 ```typescript
-import { MessageBrokerFactory } from 'message-broker-kit';
+import { MessageBrokerFactory } from '@universal-broker/cli';
 
-// 1. Create the instance
-const broker = MessageBrokerFactory.create({
-  type: 'rabbitmq', // Change this to 'kafka' or 'redis' when extending!
-  options: {
-    url: 'amqp://localhost' // Your connection string
-  }
+// 1. Create the instance (use the broker package you installed, e.g. @universal-broker/rabbitmq)
+const broker = await MessageBrokerFactory.create({
+  type: 'rabbitmq', // Change to 'kafka', 'redis', etc. when you install that broker package
+  options: { url: 'amqp://localhost' },
 });
 ```
 
@@ -85,7 +99,15 @@ async function startEmailWorker() {
 startEmailWorker();
 ```
 
-## 🎉 Conclusion
-That's it! You have successfully decoupled your applications using an enterprise-grade message broker kit.
+## 🎉 What's Next?
 
-Next up, do you want to secure sensitive user data? Check out **[Payload Encryption](../advanced-features/1-payload-encryption.md)**!
+You've set up basic publish/subscribe. Choose your path:
+
+| Goal | Next Step |
+|------|-----------|
+| **Use a different broker** (Kafka, Redis, SQS, etc.) | [Broker Configuration Reference](../configuration/broker-configs.md) |
+| **Secure sensitive data** (PII, payments) | [Payload Encryption](../advanced-features/1-payload-encryption.md) |
+| **Handle failures** (retries, DLQ, circuit breaker) | [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) |
+| **Quick lookup** | [Quick Reference](../quick-reference.md) |
+| **Full doc map** | [Documentation Hub](../INDEX.md) |
+| **Source Code** | [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) |

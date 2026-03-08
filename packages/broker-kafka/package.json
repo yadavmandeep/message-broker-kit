@@ -1,0 +1,25 @@
+{
+  "name": "@universal-broker/kafka",
+  "version": "1.2.2",
+  "description": "Kafka broker for Universal Broker SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "kafkajs": "^2.0.0",
+    "@universal-broker/core": "^1.2.2"
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker-kafka"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker-kafka#readme"
+}

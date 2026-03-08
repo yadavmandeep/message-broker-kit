@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
-    "lib": ["ES2022"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "resolveJsonModule": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "test", "dist"]
+  "files": [],
+  "references": [
+    { "path": "./packages/broker-core" },
+    { "path": "./packages/broker-kafka" },
+    { "path": "./packages/broker-redis" },
+    { "path": "./packages/broker-rabbitmq" },
+    { "path": "./packages/broker-sqs" },
+    { "path": "./packages/broker-nats" },
+    { "path": "./packages/broker-mqtt" },
+    { "path": "./packages/broker-activemq" },
+    { "path": "./packages/broker-serverless" },
+    { "path": "./packages/broker-hybrid" },
+    { "path": "./packages/broker-cli" },
+    { "path": "./packages/broker" }
+  ]
 }

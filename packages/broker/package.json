@@ -1,0 +1,36 @@
+{
+  "name": "@universal-broker/all",
+  "version": "1.2.2",
+  "description": "Meta package installing all universal-broker packages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@universal-broker/core": "^1.2.2",
+    "@universal-broker/kafka": "^1.2.2",
+    "@universal-broker/rabbitmq": "^1.2.2",
+    "@universal-broker/redis": "^1.2.2",
+    "@universal-broker/sqs": "^1.2.2",
+    "@universal-broker/nats": "^1.2.2",
+    "@universal-broker/mqtt": "^1.2.2",
+    "@universal-broker/activemq": "^1.2.2",
+    "@universal-broker/serverless": "^1.2.2",
+    "@universal-broker/hybrid": "^1.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker#readme"
+}
