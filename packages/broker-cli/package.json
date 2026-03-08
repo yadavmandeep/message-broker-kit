@@ -30,5 +30,16 @@
     "@universal-broker/activemq": "^1.2.2",
     "@universal-broker/serverless": "^1.2.2",
     "@universal-broker/hybrid": "^1.2.2"
-  }
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker-cli#readme"
 }

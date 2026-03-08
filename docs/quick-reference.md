@@ -168,8 +168,9 @@ Full guide: [Smart DLQ Dashboard](./tools/1-smart-dlq-dashboard.md)
 
 ## Related Docs
 
+- [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) — Source code and development
 - [Documentation Hub](./INDEX.md)
-- [Features Overview](./features-overview.md) — every feature with examples
+- [Features Overview](./features-overview.md)
 - [Setup & Basic Usage](./getting-started/1-setup-and-basic-usage.md)
 - [Broker Configs](./configuration/broker-configs.md)
 - [Troubleshooting](./troubleshooting.md)

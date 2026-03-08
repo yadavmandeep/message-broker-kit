@@ -19,7 +19,7 @@ npm install @universal-broker/all
 
 For full documentation, architecture guides, and enterprise patterns (Outbox, Resilience, Telemetry), please visit the main repository:
 
-👉 [**Universal Broker SDK GitHub**](https://github.com/man21/message-broker-kit)
+👉 [**Universal Broker SDK GitHub**](https://github.com/yadavmandeep/message-broker-kit)
 
 ---
 

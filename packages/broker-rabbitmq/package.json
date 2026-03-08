@@ -9,5 +9,16 @@
   "dependencies": {
     "amqplib": "^0.10.9",
     "@universal-broker/core": "^1.2.2"
-  }
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker-rabbitmq"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker-rabbitmq#readme"
 }

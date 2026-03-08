@@ -79,6 +79,7 @@
 
 ## 📖 Related Links
 
+- [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) — Source code and development  
 - [Features Overview](./features-overview.md) — every feature with examples  
 - [Troubleshooting](./troubleshooting.md) — common errors and fixes  
 - [Changelog](../CHANGELOG.md) — version history (if present)

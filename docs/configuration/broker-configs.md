@@ -257,6 +257,7 @@ await MessageBrokerFactory.create({
 
 ## Related Docs
 
-- [Setup & Basic Usage](../getting-started/1-setup-and-basic-usage.md) — first steps  
-- [Quick Reference](../quick-reference.md) — API cheat sheet  
-- [Documentation Hub](../INDEX.md) — full doc map
+- [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) — source and README
+- [Setup & Basic Usage](../getting-started/1-setup-and-basic-usage.md)
+- [Quick Reference](../quick-reference.md)
+- [Documentation Hub](../INDEX.md)

@@ -158,6 +158,7 @@ Use the [Smart DLQ Dashboard](./tools/1-smart-dlq-dashboard.md) to inspect, edit
 
 ## Getting More Help
 
-- [Features Overview](./features-overview.md) — list of every feature with examples  
-- [Documentation Hub](./INDEX.md) — full doc map  
-- [Quick Reference](./quick-reference.md) — API cheat sheet
+- [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) — Source code and development
+- [Features Overview](./features-overview.md)
+- [Documentation Hub](./INDEX.md)
+- [Quick Reference](./quick-reference.md)

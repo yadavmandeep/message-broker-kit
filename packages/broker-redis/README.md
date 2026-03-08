@@ -29,4 +29,4 @@ const broker = new EnterpriseBrokerWrapper(new RedisBroker({ url: 'redis://local
 
 For full enterprise features (Outbox, Deduplication, Telemetry, etc.), please refer to the main repository:
 
-[Universal Broker SDK Documentation](https://github.com/man21/message-broker-kit)
+[Universal Broker SDK Documentation](https://github.com/yadavmandeep/message-broker-kit)

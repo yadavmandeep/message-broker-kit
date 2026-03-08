@@ -13,5 +13,16 @@
     "lru-cache": "^11.2.6",
     "express": "^5.2.1",
     "cors": "^2.8.6"
-  }
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker-core"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker-core#readme"
 }

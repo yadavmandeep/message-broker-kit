@@ -110,3 +110,4 @@ You've set up basic publish/subscribe. Choose your path:
 | **Handle failures** (retries, DLQ, circuit breaker) | [Resilience & DLQ](../advanced-features/2-resilience-dlq-retries.md) |
 | **Quick lookup** | [Quick Reference](../quick-reference.md) |
 | **Full doc map** | [Documentation Hub](../INDEX.md) |
+| **Source Code** | [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) |

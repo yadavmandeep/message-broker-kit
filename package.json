@@ -16,8 +16,16 @@
     "uuid": "^13.0.0",
     "zod": "^4.3.6"
   },
-  "author": "man21",
+  "author": "yadavmandeep",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit#readme",
   "devDependencies": {
     "@types/amqplib": "^0.10.8",
     "@types/cors": "^2.8.19",

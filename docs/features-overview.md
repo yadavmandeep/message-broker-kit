@@ -88,4 +88,4 @@ await broker.subscribe(async (msg) => { console.log(msg.data); }, 'Orders');
 
 ---
 
-**Next:** [Documentation Hub](./INDEX.md) · [Quick Reference](./quick-reference.md) · [Troubleshooting](./troubleshooting.md)
+**Next:** [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) · [Doc Hub](./INDEX.md) · [Quick Reference](./quick-reference.md) · [Troubleshooting](./troubleshooting.md)

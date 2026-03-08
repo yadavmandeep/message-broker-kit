@@ -21,5 +21,16 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "author": "yadavmandeep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadavmandeep/message-broker-kit.git",
+    "directory": "packages/broker"
+  },
+  "bugs": {
+    "url": "https://github.com/yadavmandeep/message-broker-kit/issues"
+  },
+  "homepage": "https://github.com/yadavmandeep/message-broker-kit/tree/master/packages/broker#readme"
 }

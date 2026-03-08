@@ -77,4 +77,4 @@ Then use **Option 2** style: import the broker class from its package and wrap w
 
 ---
 
-**Related:** [Setup & Basic Usage](./getting-started/1-setup-and-basic-usage.md) · [Broker Configs](./configuration/broker-configs.md) · [Doc Hub](./INDEX.md)
+**Next:** [GitHub Repository](https://github.com/yadavmandeep/message-broker-kit/blob/master/README.md) · [Setup & Basic Usage](./getting-started/1-setup-and-basic-usage.md) · [Broker Configs](./configuration/broker-configs.md) · [Doc Hub](./INDEX.md)
